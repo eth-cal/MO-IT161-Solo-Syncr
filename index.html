@@ -51,9 +51,39 @@
             </div>
 
             <div class="main-view">
-                &lt;insert view of the mode here&gt;
-                <br/>
+                <embed id="mv.view" type="text/html" src="experiment.html">
             </div>
+
+            <script type="text/javascript">
+                /** @type {Map<string, string>} */
+                const pages = new Map();
+                pages.set("lsb.button-rack.dashboard", "");
+                pages.set("lsb.button-rack.timeline", "experiment.html");
+
+                var mainViewPane = document.getElementById("mv.view");
+
+                function mv_page_navTo(htmlFile) {
+                    // TODO: add some sort of checking
+                    mainViewPane.setAttribute("src", htmlFile);
+                }
+ 
+                for (const lsbButton of document.getElementById("lsb.button-rack").children) {
+                    /** @type {string} */
+                    let htmlId = lsbButton.getAttribute("id") || "";
+                    let htmlTargetSource = "";
+                    
+                    if (pages.has(htmlId)) {
+                        htmlTargetSource = pages.get(htmlId);
+                    }
+
+                    console.log("Id:", htmlId, "| Source:", htmlTargetSource);
+
+                    lsbButton.onclick = function() {
+                        console.log("GOTO:", htmlTargetSource);
+                        mv_page_navTo(htmlTargetSource);
+                    }
+                }
+            </script>
         </div>
     </body>
 </html>
