@@ -29,6 +29,19 @@ hr.common {
 
 /* #region Common styling */
 
+
+.c_button {
+    border-radius: 4px;
+    border: 0;
+
+    padding: 5px 5px 5px 5px;
+
+    box-shadow: 0px 5px 3px var(--shadows-buttons-idle-color);
+}
+
+
+
+
 .c_grid-section {
     display: flex;
     flex-wrap: nowrap;
@@ -44,25 +57,21 @@ hr.common {
     box-sizing: border-box;
 }
 
-.c_grid-section_button {
-    background-color: #FFFFFFFF;
-    border-radius: 4px;
+.c_grid-section .c_button {
+    /* background-color: #FFFFFFFF;
+    border-radius: 4px; */
     border: 0;
 
-    padding: 5px 5px 5px 5px;
+    /* padding: 5px 5px 5px 5px; */
 
     width: 100%;
     height: auto;
-
-    box-shadow: 0px 5px 3px #3a4c5f42;
-
-    cursor: pointer;
 
     font-size: 10px;
 }
 
 
-.c_grid-section_icon {
+.c_trait_buttons_with-icon {
     aspect-ratio: 1/1;
 
     img {
