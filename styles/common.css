@@ -5,10 +5,9 @@
     --shadows-sidebar-drawover: #7F96A2;
 }
 
-html {
+html, body {
     font-family: Archivo;
     font-size: 14;
-    background-color: #AAAAAA;
 }
 
 button {
