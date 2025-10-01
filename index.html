@@ -51,7 +51,7 @@
             </div>
 
             <div class="main-view">
-                <embed id="mv.view" type="text/html" src="experiment.html">
+                <embed id="mv.view" type="text/html" src="">
             </div>
 
             <script type="text/javascript">
@@ -60,11 +60,17 @@
                 pages.set("lsb.button-rack.dashboard", "");
                 pages.set("lsb.button-rack.timeline", "experiment.html");
 
-                var mainViewPane = document.getElementById("mv.view");
+                let mainViewPane = document.getElementById("mv.view");
+                let currentView = "";
 
                 function mv_page_navTo(htmlFile) {
-                    // TODO: add some sort of checking
-                    mainViewPane.setAttribute("src", htmlFile);
+                    // TODO: find some better alternative to matching file paths.
+                    if (currentView == htmlFile) {
+                        return;
+                    } else {
+                        mainViewPane.setAttribute("src", htmlFile);
+                        currentView = htmlFile;
+                    }
                 }
  
                 for (const lsbButton of document.getElementById("lsb.button-rack").children) {
@@ -83,6 +89,8 @@
                         mv_page_navTo(htmlTargetSource);
                     }
                 }
+
+                mv_page_navTo(currentView);
             </script>
         </div>
     </body>
