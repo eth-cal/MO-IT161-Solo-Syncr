@@ -274,24 +274,29 @@ headers and footers */
     width: 80px;
     height: 100vh;
     background-color: #FFFFFF;
-}
 
-.left-sidebar_mode-selection {
-    position: relative;
+    .misc-ftr {
+        background-color: var(--palette-accent-color);
+        position: absolute;
 
-    height: auto;
-    padding: 10px 10px 10px 10px;
-}
+        width: 100%;
+        bottom: 0;
+        height: auto;
+        padding: 10px 10px 10px 10px;
+        min-height: 50px;
 
-.left-sidebar_footer-options {
-    background-color: #ccd1e2;
+        > .c_flex_list {
+            width: 100%;
+            background-color: #8e98b8;
+        }
+    }
 
-    width: 100%;
-    box-sizing: border-box;
-    bottom: 0;
-    height: auto;
-    padding: 10px 10px 10px 10px;
-    min-height: 50px;
+    .mode-list {
+        position: relative;
+
+        height: auto;
+        padding: 10px;
+    }
 }
 
 /* #endregion */
