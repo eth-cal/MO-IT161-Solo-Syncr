@@ -262,13 +262,18 @@ headers and footers */
 
 
 
+.side-shade {
+    box-shadow: 5px 0px 10px #25242167;
+}
+
+
+
 .left-sidebar {
     position: sticky;
     padding: 0 0 0 0;
     width: 80px;
     height: 100vh;
     background-color: #FFFFFF;
-    box-shadow: 10px 0px 20px #aca0884c;
 }
 
 .left-sidebar_mode-selection {
