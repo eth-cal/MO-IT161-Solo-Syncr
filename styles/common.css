@@ -1,6 +1,16 @@
 :root {
+    /* TODO: More color variables to standardise palette */
     --buttons-generic: #EFEFEF;
     --buttons-accept: #7DC132;
+
+    --palette-primary-color: #eee2c9;
+    --palette-primary-dark-color: #686360;
+    
+    --palette-accent-color: #ccd1e2;
+    --palette-accent-color-dark: #8e98b8;
+
+    --shadows-primary-color: #5f3a3a70;
+    --shadows-primary-inner-color: #25151596;
 
     --shadows-sidebar-drawover: #7F96A2;
     --shadows-buttons-idle-color: #5f3a3a70;
@@ -87,6 +97,24 @@ hr.common {
 
 
 .c_grid-section {
+
+.c_pr-light {
+    background-color: var(--palette-primary-color);
+}
+
+
+
+.c_ac-dark {
+    background-color: var(--palette-accent-color-dark);
+}
+
+
+
+.c_pit_pr-dark {
+    background-color: var(--palette-primary-dark-color);
+    box-shadow: inset 0px 3px 4px var(--shadows-primary-inner-color);
+    border-radius: 4px;
+}
     display: flex;
     flex-wrap: nowrap;
     flex-grow: inherit;
