@@ -191,24 +191,24 @@ Pair with .c_flex_h or .c_flex_v to change their direction*/
         padding: 4px;
         gap: 4px;
 
-        .c_button {
+        > .c_button {
             border-radius: 6px;
         }
     }
 
     &.square {
-        .c_button {
+        > .c_button {
             aspect-ratio: 1/1;
         }
     }
 
-    .c_button {
+    > .c_button {
         font-size: 10px;
     }
 }
 
 
-.c_flex_h {
+*.c_flex_h {
     flex-direction: row;
 
     .c_button {
@@ -218,7 +218,7 @@ Pair with .c_flex_h or .c_flex_v to change their direction*/
 }
 
 
-.c_flex_v {
+*.c_flex_v {
     flex-direction: column;
 
     .c_button {
@@ -276,7 +276,7 @@ headers and footers */
     height: 100vh;
     background-color: #FFFFFF;
 
-    .misc-ftr {
+    > .misc-ftr {
         background-color: var(--palette-accent-color);
         position: absolute;
 
@@ -292,7 +292,7 @@ headers and footers */
         }
     }
 
-    .mode-list {
+    > .mode-list {
         position: relative;
 
         height: auto;
