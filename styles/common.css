@@ -315,9 +315,5 @@ headers and footers */
     }
 }
 
-.side-bar-split {
     display: flex;
-    position: fixed;
-    align-content: center;
     width: 100%;
-}
