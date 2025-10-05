@@ -136,6 +136,10 @@ Centring options:
 }
 
 
+.c_button.with-icon {
+    aspect-ratio: 1/1;
+}
+
 
 
 .c_pr-light {
@@ -213,8 +217,6 @@ Pair with .c_flex_h or .c_flex_v to change their direction*/
 }
 
 
-.c_trait_buttons_with-icon {
-    aspect-ratio: 1/1;
 .c_flex_v {
     flex-direction: column;
 
