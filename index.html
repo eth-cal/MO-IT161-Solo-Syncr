@@ -8,9 +8,9 @@
     </header>
     
     <body>
-        <div class="side-bar-split">
-            <div class="left-sidebar">
-                <div class="left-sidebar_mode-selection">
+        <div class="c_flex_lay">
+            <div class="left-sidebar side-shade">
+                <div class="mode-list">
                     <img
                         src="https://placehold.co/128?font=noto-sans"
                         width="60px"
@@ -18,31 +18,28 @@
                     <hr class="common">
                     <div
                         id="lsb.button-rack" 
-                        class="c_grid-section"
+                        class="c_flex_list c_flex_v c_pr-light"
                         style="width: 100%;"
                     >
-                        <button id="lsb.button-rack.dashboard" class="c_button c_trait_buttons_with-icon c_trait_expand-on-hover">
+                        <button id="lsb.button-rack.dashboard" class="c_button with-icon">
                             <i class="bi bi-pie-chart" style="font-size: 16pt;"></i>
                         </button>
-                        <button id="lsb.button-rack.timeline" class="c_button c_trait_buttons_with-icon c_trait_expand-on-hover">
+                        <button id="lsb.button-rack.timeline" class="c_button with-icon">
                             <i class="bi bi-bar-chart-steps" style="font-size: 16pt;"></i>
                         </button>
-                        <button id="lsb.button-rack.calendar" class="c_button c_trait_buttons_with-icon c_trait_expand-on-hover">
+                        <button id="lsb.button-rack.calendar" class="c_button with-icon">
                             <i class="bi bi-calendar" style="font-size: 16pt;"></i>
                         </button>
-                        <button id="lsb.button-rack.alarms" class="c_button c_trait_buttons_with-icon c_trait_expand-on-hover">
+                        <button id="lsb.button-rack.alarms" class="c_button with-icon">
                             <i class="bi bi-alarm" style="font-size: 16pt;"></i>
                         </button>
-                        <button id="lsb.button-rack.kanban" class="c_button c_trait_buttons_with-icon c_trait_expand-on-hover">
+                        <button id="lsb.button-rack.kanban" class="c_button with-icon">
                             <i class="bi bi-kanban" style="font-size: 16pt;"></i>
                         </button>
                     </div>
                 </div>
-                <div class="left-sidebar_footer-options">
-                    <div
-                        class="c_grid-section"
-                        style="width: 100%; background-color: #8e98b8;"
-                    >
+                <div class="left-sidebar misc-ftr">
+                    <div class="c_flex_list c_flex_v">
                         <button class="c_button">Guide</button>
 
                         <button class="c_button">About</button>
@@ -51,7 +48,7 @@
             </div>
 
             <div class="main-view">
-                <embed id="mv.view" type="text/html" src="experiment.html">
+                <embed id="mv.view" type="text/html" src="">
             </div>
 
             <script type="text/javascript">
@@ -60,11 +57,17 @@
                 pages.set("lsb.button-rack.dashboard", "");
                 pages.set("lsb.button-rack.timeline", "experiment.html");
 
-                var mainViewPane = document.getElementById("mv.view");
+                let mainViewPane = document.getElementById("mv.view");
+                let currentView = "";
 
                 function mv_page_navTo(htmlFile) {
-                    // TODO: add some sort of checking
-                    mainViewPane.setAttribute("src", htmlFile);
+                    // TODO: find some better alternative to matching file paths.
+                    if (currentView == htmlFile) {
+                        return;
+                    } else {
+                        mainViewPane.setAttribute("src", htmlFile);
+                        currentView = htmlFile;
+                    }
                 }
  
                 for (const lsbButton of document.getElementById("lsb.button-rack").children) {
@@ -83,6 +86,8 @@
                         mv_page_navTo(htmlTargetSource);
                     }
                 }
+
+                mv_page_navTo(currentView);
             </script>
         </div>
     </body>
