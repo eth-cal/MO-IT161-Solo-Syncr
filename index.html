@@ -53,15 +53,15 @@ changes are done in a dedicated branch. -->
             <script type="text/javascript">
                 /** @type {Map<string, string>} */
                 const pages = new Map();
-                pages.set("lsb.button-rack.dashboard", "");
-                pages.set("lsb.button-rack.timeline", "experiment.html");
+                pages.set("lsb.button-rack.dashboard", "experiment.html");
+                pages.set("lsb.button-rack.timeline", "/pages/timeline.html");
 
                 let mainViewPane = document.getElementById("mv.view");
-                let currentView = "";
+                let currentView = "pages/timeline.html";
 
-                function mv_page_navTo(htmlFile) {
+                function mv_page_navTo(htmlFile, force) {
                     // TODO: find some better alternative to matching file paths.
-                    if (currentView == htmlFile) {
+                    if (!force && currentView == htmlFile) {
                         return;
                     } else {
                         mainViewPane.setAttribute("src", htmlFile);
@@ -86,7 +86,7 @@ changes are done in a dedicated branch. -->
                     }
                 }
 
-                mv_page_navTo(currentView);
+                mv_page_navTo(currentView, true);
             </script>
         </div>
     </body>
