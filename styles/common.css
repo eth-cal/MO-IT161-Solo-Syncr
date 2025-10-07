@@ -150,6 +150,12 @@ Centring options:
 
 
 
+.c_pr-dark, .c_pit_pr-dark {
+    background-color: var(--palette-primary-dark-color);
+}
+
+
+
 .c_ac-dark {
     background-color: var(--palette-accent-color-dark);
 }
@@ -157,7 +163,6 @@ Centring options:
 
 
 .c_pit_pr-dark {
-    background-color: var(--palette-primary-dark-color);
     box-shadow: inset 0px 3px 4px var(--shadows-primary-inner-color);
     border-radius: 4px;
 }
