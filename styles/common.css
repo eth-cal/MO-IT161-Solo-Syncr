@@ -144,6 +144,29 @@ Centring options:
 
 
 
+.c_button.entry {
+    display: flex;
+    flex-direction: row;
+
+    text-align: left;
+    align-items: center;
+    font-size: 12;
+
+    &.cent {
+        > span {
+            flex-grow: 1;
+            text-align: center;
+        }
+    }
+
+    > i.bi {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+}
+
+
+
 .c_pr-light {
     background-color: var(--palette-primary-color);
 }
@@ -316,8 +339,8 @@ headers and footers */
     .active-header {
         width: 100%;
         height: 120px;
-        
-        background-color: rgba(255, 255, 255, 0.603);
+
+        background-color: #ffffff9a;
         padding: 10px 10px 10px 10px;
 
         /* TODO: Move this hr subclass to c_flex_lay and c_flex_list instead. */
@@ -360,8 +383,18 @@ headers and footers */
 
             > .c_button {
                 flex-shrink: 1;
+
+                > i {font-size: 15;}
             }
-        } 
+        }
+    }
+
+    #lsb\.plan-sel\.list {
+        padding: 10px;
+
+        > #lsb\.plan-sel\.list\.plans {
+            background-color: #ffffff9a;
+        }
     }
 }
 
