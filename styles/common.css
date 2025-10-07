@@ -312,13 +312,13 @@ headers and footers */
     width:240px;
     height: auto;
     background-color: #686360;
-            
+    
     .active-header {
-        width: auto;
-        height:220px;
+        width: 100%;
+        height: 120px;
+        
         background-color: rgba(255, 255, 255, 0.603);
         padding: 10px 10px 10px 10px;
-        gap: 0px;
 
         /* TODO: Move this hr subclass to c_flex_lay and c_flex_list instead. */
         > hr {
@@ -329,6 +329,8 @@ headers and footers */
         > span {
             width: 100%;
             display: block;
+
+            flex-shrink: 0;
             
             white-space: nowrap;
             overflow: hidden;
@@ -341,8 +343,6 @@ headers and footers */
             font-size: 18px;
             font-weight: bold;
             color: var(--palette-primary-dark-color);
-
-
         }
 
 
@@ -350,6 +350,18 @@ headers and footers */
         >#lsb\.plan-sel\.active\.desc {
             font-style: italic;
         }
+
+
+
+        #lsb\.plan-sel\.active\.opts {
+            width: min-content;
+            flex-direction: row-reverse;
+            align-self: flex-end;
+
+            > .c_button {
+                flex-shrink: 1;
+            }
+        } 
     }
 }
 
