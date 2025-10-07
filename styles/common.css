@@ -216,19 +216,17 @@ Pair with .c_flex_h or .c_flex_v to change their direction*/
 
 *.c_flex_h {
     flex-direction: row;
-
-    .c_button {
-        width: auto;
-        height: 100%;
-    }
 }
 
 
 *.c_flex_v {
     flex-direction: column;
+}
 
-    .c_button {
-        width: 100%;
+
+*.c_flex_v, *.c_flex_h {
+    > .c_button {
+        width: auto;
         height: auto;
     }
 }
