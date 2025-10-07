@@ -327,8 +327,8 @@ headers and footers */
 .planner-select {
     position: sticky;
 
-    width:240px;
-    height: auto;
+    width: 240px;
+    height: 100vh;
     background-color: #686360;
     
     .active-header {
@@ -386,6 +386,8 @@ headers and footers */
 
     #lsb\.plan-sel\.list {
         padding: 10px;
+        overflow-x: hidden;
+        overflow-y: auto;
 
         > #lsb\.plan-sel\.list\.plans {
             background-color: #ffffff9a;
