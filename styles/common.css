@@ -316,33 +316,41 @@ headers and footers */
     background-color: #686360;
             
     .active-header {
-        width:100%;
-        height:120px;
+        width: auto;
+        height:220px;
         background-color: rgba(255, 255, 255, 0.603);
         padding: 10px 10px 10px 10px;
+        gap: 0px;
 
-        #lsb\.plan-sel\.active\.title {
+        /* TODO: Move this hr subclass to c_flex_lay and c_flex_list instead. */
+        > hr {
+            margin-left: unset;
+            margin-right: unset;
+        }
+
+        > span {
             width: 100%;
-
-            font-size: 18px;
-            font-weight: bold;
-
-            display: inline-block;
+            display: block;
+            
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            color: var(--palette-primary-dark-color);
         }
 
 
 
-        #lsb\.plan-sel\.active\.desc {
-            width: 100%;
-            display: inline-block;
+        >#lsb\.plan-sel\.active\.title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--palette-primary-dark-color);
 
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+
+        }
+
+
+
+        >#lsb\.plan-sel\.active\.desc {
+            font-style: italic;
         }
     }
 }
