@@ -24,6 +24,9 @@
 * {
     box-sizing: border-box;
     border: 0px;
+
+    scrollbar-color: #ffffff83 #00000023;
+    scrollbar-width: thin;
 }
 
 
