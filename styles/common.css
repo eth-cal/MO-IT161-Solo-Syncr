@@ -460,6 +460,7 @@ headers and footers */
     height: 100%;
     
     box-shadow: inset 9px 0px 3px -6px #7a74693d;
+    background-color: var(--palette-primary-color);
 
     .c_button > i.bi {
         font-size: 130%;
