@@ -1,3 +1,15 @@
+/** WHY??? */
+var localStorageSupport; {
+    try {
+        localStorage.setItem("_testForSupport", 1);
+        localStorage.getItem("_testForSupport");
+        localStorage.removeItem("_testForSupport");
+        localStorageSupport = true;
+    } catch (ex) {
+        localStorageSupport = false;
+    }
+}
+
 let fallbackPage = "/pages/fallback.html";
 
 // NOTE: Just put currently non-existent links so you don't have to push
@@ -55,11 +67,8 @@ async function trySwitchViewTo(id) {
             if (result.ok) {
                 visitedPages[link] = true;
                 _switchViewTo(id);
+                activeId = id;
             }
-
-            console.log(visitedPages);
-
-            activeId = id;
         } );
     }
 }
@@ -75,4 +84,15 @@ function _switchViewTo(id) {
 }
 
 
-trySwitchViewTo("lsb.button-rack.timeline")
+// Unusable on Safari/WebView for iOS.
+// https://bugs.webkit.org/show_bug.cgi?id=219102
+window.addEventListener("beforeunload", (ev) => {
+    if (localStorageSupport) {
+        localStorage.setItem("last_page", activeId);
+    }
+})
+
+
+if (localStorageSupport) {
+    trySwitchViewTo(localStorage.getItem("last_page"));
+};
