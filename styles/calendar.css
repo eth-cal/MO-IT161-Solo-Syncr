@@ -1,0 +1,27 @@
+#cl\.grid-view {
+    display: flex;
+
+    overflow: auto auto;
+
+    background-color: blue;
+
+    flex: 0 1;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    > div {
+        display: flex;
+
+        height: 180px;
+        background-color: springgreen;
+
+        justify-content: center;
+        gap: 10px;
+
+        > div {
+            width: 100px;
+            background-color: bisque;
+        }
+    }
+}
