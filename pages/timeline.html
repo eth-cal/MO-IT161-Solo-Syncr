@@ -12,13 +12,7 @@ of pages (how many pages use them, specifically). -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo"/>
     
     <body>
-        <div class="c_wh-100p" style="
-            position: fixed;
-            display: flex;
-
-            flex-direction: column;
-            flex-wrap: nowrap;
-        ">
+        <div class="c_wh-100p tl_main">
             <!--
             TODO: Somehow make this element reusable. Probably even make more elements reusable.
             This may be of interest: https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
@@ -27,17 +21,12 @@ of pages (how many pages use them, specifically). -->
                 <div class="title">
                     Timeline
                 </div>
-                <div
-                    id="mv.edit.topbar"
-                    class="opts c_flex_list c_flex_h c_b-rack_pr-light"
-                >
-                    <button class="c_button">
-                        <i class="bi bi-funnel"></i>
-                        Filters
+                <div id="mv.edit.topbar" class="opts c_flex_list c_flex_h c_b-rack_pr-light">
+                    <button class="c_button entry">
+                        <i class="bi bi-funnel"></i>Filters
                     </button>
-                    <button class="c_button">
-                        <i class="bi bi-eye"></i>
-                        Visibility
+                    <button class="c_button entry">
+                        <i class="bi bi-eye"></i>Visibility
                     </button>
                 </div>
             </div>
@@ -45,24 +34,13 @@ of pages (how many pages use them, specifically). -->
             <div id="main-view-content" class="c_flex_main">
                 <!-- I'll just leave this in with its style until
                 actual code is written to render the timeline. -->
-                <div class="c_cent c_wh-100p c_" style="
-                    background-color: var(--palette-accent-color-darker);
-                    flex-shrink: 1;
-                    text-align: center;
-                    color: #FFFFFF;
-                ">
+                <div id="tl-mode.timescr.sliding-pane"class="c_cent c_wh-100p c_">
 
                 TODO: Since designing the timeline by hand is already complex,<br>
                 maybe it's better to just render this with JavaScript.
 
                 </div>
-                <div style="
-                    flex-shrink: 0;
-                    flex-grow: 0;
-                    width: 100%;
-                    height: 110px;
-                    padding: 10px;
-                ">
+                <div class="tl_footer">
                     <div class="c_wh-100p c_flex_lay gapped c_flex_v c_cent_h tl_ts">
                         <!-- Slider -->
                         <div class="slider c_pit_pr-dark">
@@ -90,26 +68,8 @@ of pages (how many pages use them, specifically). -->
                             and time moving it gradually to the right. Now that the control bar
                             is uncomfortably wide, I restricted its size.-->
 
-                            <script type="text/javascript">
-                                const dayShorthands = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-                                const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                                let currentDate = new Date();
-
-                                /** 
-                                 * @param {Date} date
-                                 * @return {string}
-                                */
-                                function formatted_date(date) {
-                                    let hour = currentDate.getHours();
-                                    let halfday = (hour - 1) % 12 + 1;
-                                    let meridiem = (hour >= 12)? 'PM' : 'AM';
-                                    return `${dayShorthands[currentDate.getDay()]}, ${monthNames[currentDate.getMonth()]} ${currentDate.getDate()}, ${currentDate.getFullYear()} | ${(currentDate.getHours() - 1) % 12 + 1}:${currentDate.getMinutes()} ${meridiem}`;
-                                }
-
-                                document.getElementById("tl-mode.timescr.datetime").textContent = formatted_date();
-                            </script>
+                            <script type="text/javascript" src="/scripts/tl_clock.js"></script>
                         </div>
-                        
                     </div>
                 </div>
             </div>
