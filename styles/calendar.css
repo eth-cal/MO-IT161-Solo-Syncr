@@ -22,16 +22,37 @@ view works, both horizontally and vertically.*/
 
     > div {
         display: flex;
-
         height: 180px;
-        background-color: springgreen;
-
-        justify-content: center;
         gap: 10px;
+        flex-shrink: 0;
+    }
+}
 
-        > div {
-            width: 100px;
-            background-color: bisque;
-        }
+#cl\.grid-view > div > .cal_box {
+    display: flex;
+
+    flex-direction: column;
+    flex-shrink: 0;
+
+    width: 180px;
+    height: 100%;
+
+    padding: 10px;
+    gap: 20px;
+
+    background-color: bisque;
+
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px var(--shadows-primary-color);
+}
+
+#cl\.grid-view .cal_box > .task_list {
+    white-space: nowrap;
+    flex-direction: column;
+
+    gap: 2px;
+
+    > .c_button > i {
+        font-size: 12px;
     }
 }
