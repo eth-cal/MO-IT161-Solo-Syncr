@@ -57,10 +57,11 @@ view works, both horizontally and vertically.*/
     }
 }
 
+
 #cl\.grid-view\.ctrl\.opts > .c_button > i.bi {
     font-size: 14px;
 }
 
-#cl\.grid-view\.ctrl\.add-task > .c_button > i.bi {
+#cl\.grid-view\.ctrl\.add-task > i.bi {
     font-size: 20px;
 }
