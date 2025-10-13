@@ -278,11 +278,18 @@ headers and footers */
 
 
 
-/* #region Effects */
+/* #region Topbar for Embed */
 
+#embed_top_div {
+    position: fixed;
+    display: flex;
 
+    flex-flow: column nowrap;
+} 
 
 /* #endregion */
+
+
 
 /* #region Left sidebar styling */
 

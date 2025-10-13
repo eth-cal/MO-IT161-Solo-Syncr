@@ -1,5 +1,3 @@
-/* TODO: Move this to common.css Ensures that scrolling for the main
-view works, both horizontally and vertically.*/
 #embed_top_div {
     position: fixed;
     display: flex;

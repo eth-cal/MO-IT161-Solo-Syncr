@@ -54,19 +54,12 @@
     }
 }
 
-.tl_main {
-    position: fixed;
-    display: flex;
+#tl-mode\.timescr\.sliding-pane {
+    background-color: var(--palette-accent-color-darker);
+    flex: 1 0;
 
-    flex-flow: column nowrap;
-
-    #tl-mode\.timescr\.sliding-pane {
-        background-color: var(--palette-accent-color-darker);
-        flex: 1 0;
-
-        text-align: center;
-        color: #FFFFFF; 
-    }
+    text-align: center;
+    color: #FFFFFF; 
 }
 
 .tl_footer {
