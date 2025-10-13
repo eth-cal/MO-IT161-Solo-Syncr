@@ -265,11 +265,14 @@ headers and footers */
     display: flex;
 
     flex: 1;
-    flex-grow: 1;
     flex-direction: column;
 
     height: auto;
     overflow-y: auto;
+
+    &.col {
+        flex-direction: row;
+    }
 }
 
 
