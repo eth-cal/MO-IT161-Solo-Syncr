@@ -6,9 +6,27 @@
 
 
 
+
+
 .c_button.alarm-box {
     height: 80;
     padding: 10px;
+
+    /*
+    TODO: Move this to common.css for use with large buttons to
+    minimise animations.
+    */
+    &.min-anim {
+        &:hover {
+            transform: 
+                scale(102.5%);
+        }
+
+        &:active {
+            transform: 
+                scale(97.5%);
+        }
+    }
 
     > * > span.time-set {
         font-size: 24px;
