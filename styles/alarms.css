@@ -6,6 +6,17 @@
 
 
 
+.c_tbox {
+    font-size: 40;
+    font-family: Archivo;
+    
+    border-radius: 5px;
+    box-shadow: inset 0px 3px 4px var(--shadows-primary-inner-color);
+
+    &.cent {
+        text-align: center;
+    }
+}
 
 
 .c_button.alarm-box {
