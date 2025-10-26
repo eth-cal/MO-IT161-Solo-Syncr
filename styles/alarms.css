@@ -119,6 +119,51 @@
         }
     }
 }
+
+
+
+input[type="checkbox"].c_switch {
+    appearance: none;
+
+    background-color: #00000045;
+    outline: 1px solid #00000085;
+    border-radius: 4px;
+
+    transition: 
+        transform 200ms,
+        background-color 200ms,
+        outline 200ms;
+
+    &:hover {
+        background-color: #FFFFFF25;
+        outline: 3px solid #00000085;
+        transform: scale(110%);
+    }
+
+    &:active {
+        outline: 1px solid #00000085;
+        transform: scale(95%);
+    }
+
+    &:checked {
+        color: #000000;
+
+        transform: scale(110%);
+        background-color: #FFFFFFB3;
+        outline: 1px solid #FFFFFFFF;
+
+        &:hover {
+            background-color: #FFFFFF45;
+            outline-width: 3px;
+            transform: scale(110%)
+        }
+
+        &:active {
+            outline-width: 1px;
+            transform: scale(95%)
+        }
+    }
+}
 .c_button.alarm-box {
     height: 80;
     padding: 10px;
