@@ -20,6 +20,11 @@
 
 
 
+#al\.opts-pane {
+    padding: 10px;
+    gap: 10px;
+}
+
 
 
 #al\.opts-pane > div {
@@ -164,6 +169,55 @@ input[type="checkbox"].c_switch {
         }
     }
 }
+
+
+
+#al\.opts-pane\.ring-time\.day-setter,
+#al\.opts-pane\.ring-time\.time-setter {
+    display: flex;
+    flex-direction: row;
+    
+    padding: 5px;
+    gap: 5px;
+    
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+
+
+#al\.opts-pane\.ring-time\.day-setter {
+    height: 50000px;
+    > div {
+        font-size: 16;
+        justify-content: center;
+
+        > span {
+            text-align: center;
+        }
+
+        > input[type="checkbox"] {
+            aspect-ratio: 1;
+            width: 40px;
+            height: 40px;
+            font-size: 15pt;
+        }
+    }
+}
+
+
+
+#al\.opts-pane\.ring-time\.time-setter > * {
+    aspect-ratio: 1;
+    width: 60px;
+    height: 60px;
+    font-size: 25pt;
+}
+
+
+
 .c_button.alarm-box {
     height: 80;
     padding: 10px;
