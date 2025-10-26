@@ -55,9 +55,83 @@
                         ">
                             12:00 PM
                         </div>
-                    </div>
-                    <div class="c_flex_list c_flex_v c_pr-light" style="flex: 1 0;">
-
+                    </div>s
+                    <div id="al.opts-pane" class="c_flex_list c_flex_v c_pr-light">
+                        <div id="al.opts-pane.ring-time">
+                            <div>
+                                Ring Time
+                            </div>
+                            <div id="al.opts-pane.ring-time.time-setter">
+                                <input id="..ring-time.hour" class="c_tbox cent" type="textbox" value="12" onemptied="0">
+                                <input id="..ring-time.minute" class="c_tbox cent" type="textbox" value="00" >
+                                <button id="..ring-time.meridiem" class="c_button" onclick="
+                                event.target.textContent = (event.target.textContent.startsWith(`P`)? `AM`: `PM`)
+                                ">PM</button>
+                                <button id="..ring-time.meridiem" class="c_button with-icon">
+                                    <i class="bi bi-clock"></i>
+                                </button>
+                            </div>
+                            <div id="al.opts-pane.ring-time.day-setter">
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input type="checkbox" class="c_switch"/>
+                                    <span>S</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input type="checkbox" class="c_switch"/>
+                                    <span>M</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input type="checkbox" class="c_switch"/>
+                                    <span>T</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input type="checkbox" class="c_switch"/>
+                                    <span>W</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input type="checkbox" class="c_switch"/>
+                                    <span>TH</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input type="checkbox" class="c_switch"/>
+                                    <span>F</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input type="checkbox" class="c_switch"/>
+                                    <span>SA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <span>
+                                Snoozing
+                            </span>
+                            <input type="checkbox"/>
+                        </div>
+                        <div>
+                            <span>
+                                Snoozing
+                            </span>
+                            <input type="checkbox"/>
+                        </div>
+                        <div>
+                            <span>
+                                Snoozing
+                            </span>
+                            <input type="checkbox"/>
+                        </div>
+                        <div>
+                            <span>
+                                Snoozing
+                            </span>
+                            <input type="checkbox"/>
+                        </div>
+                        <div>
+                            <span>
+                                Snoozing
+                            </span>
+                            <input type="checkbox"/>
+                        </div>
                     </div>
                 </div>
             </div>
