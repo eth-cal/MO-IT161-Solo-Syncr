@@ -112,6 +112,8 @@
                             <input id="al.opts-pane.priority" type="checkbox"/>
                         </div>
                         <script type="text/javascript">
+                            const regexSignedInteger = /^(?<sign>-)?(?<value>\d+)*$/
+
                             /** @type {HTMLInputElement} */
                             let snoozeBox = document.getElementById("al.opts-pane.snooze")
                             /** @type {HTMLInputElement} */
@@ -166,7 +168,7 @@
 
 
 
-                            function _mode_alarms_textfieldValidation(
+                            function ClampedTextFieldWrapper(
                                 /** @type {HTMLInputElement} */
                                 field,
                                 /** @type {int} */
@@ -174,26 +176,40 @@
                                 /** @type {int} */
                                 rMax,
                                 /** @type {function(int, int) => None} */
-                                success,
+                                onValidChange,
                                 /** @type {int} */
                                 defval = rMin
                             ) {
+                                if (field.hasAttribute("data-lastValue")) {
+                                    console.log(`Text field ${field.name}[${field.id}] is possibly controlled by a wrapper already.`)
+                                }
+
                                 field.setAttribute("data-lastValue", clamp(defval, rMin, rMax))
                                 field.addEventListener("input", function(event) {
-                                    let textValue = this.value
+                                    if (this.value == "") {return}
+                                    
                                     /** @type {int} */
-                                    let numValue = this.getAttribute("data-lastValue")
+                                    let lastValue = this.getAttribute("data-lastValue")
+                                    let results = regexSignedInteger.exec(this.value)
 
-                                    if (textValue == "") {return}
-                                    else if (textValue.match("^\\d*$") == null) {
-                                        this.value = numValue.toString()
+                                    if (results == null) {
+                                        this.value = lastValue.toString()
                                     } else {
-                                        numValue = parseInt(textValue)
-                                        let newNumber = clamp(textValue, rMin, rMax)
+                                        let {sign, value} = results.groups
 
-                                        field.setAttribute("data-lastValue", newNumber)
-                                        this.value = newNumber.toString()
-                                        success?.(newNumber, numValue)
+                                        if (sign != null && value == null) {
+                                            return
+                                        } else {
+                                            sign = parseInt((sign == null? "1": sign.padEnd(2, "1")))
+                                            value = (value == null? rMin: parseInt(value))
+
+                                            let newValue = value * sign
+                                            let clampedValue = clamp(value * sign, rMin, rMax)
+
+                                            field.setAttribute("data-lastValue", clampedValue)
+                                            this.value = clampedValue.toString()
+                                            onValidChange?.(clampedValue, newValue)
+                                        }
                                     }
                                 })
 
@@ -210,12 +226,14 @@
                             minuteField.value = String(0).padStart(2, '0')
                             _mode_alarms_changeMeridiem()
 
-                            _mode_alarms_textfieldValidation(
+
+
+                            ClampedTextFieldWrapper(
                                 hourField, 1, 12,
                                 function(num, raw) {if (raw > 12) {_mode_alarms_changeMeridiem()}}
                             )
 
-                            _mode_alarms_textfieldValidation(
+                            ClampedTextFieldWrapper(
                                 minuteField, 0, 59,
                                 function(num) {_mode_alarms_paddedSet(minuteField, num, 2)}
                             )
@@ -243,7 +261,6 @@
                             })
 
                             meridiemBox.addEventListener("click", _mode_alarms_changeMeridiem)
-
                         </script>
                     </div>
                 </div>
