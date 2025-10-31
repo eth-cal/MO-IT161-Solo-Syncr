@@ -19,11 +19,13 @@
                     </button>
                 </div>
             </div>
-                gap: 10px;
             <div id="main-view-content" class="c_flex_lay c_flex_h c_flex_main col">
                 <div id="al.alarms_list" class="c_flex_list c_flex_v c_pr-dark">
                     <!--
                     TODO: work on the appearance of this element, then try building the element
+                    in JS. "style" attribute this all you want, just remove this when the thing is
+                    done.
+                    -->
                     <button class="c_button alarm-box min-anim">
                         <div class="c_wh-100p" style="text-align: left;">
                             <span class="time-set">12:00 PM</span>
@@ -32,31 +34,31 @@
                 </div>
                 <div id="al.alarms_controls..container"class="c_flex_lay c_flex_v gapped">
                     <div class="c_flex_lay gapped c_flex_h">
-                            <button class="c_button with-icon">
+                        <div id="al.alarms_controls.rack" class="c_flex_list compact bt_m c_flex_v c_pit_pr-dark">
                             <button id="al.alarms_controls.rack.new" class="c_button with-icon">
                                 <i class="bi bi-plus-lg"></i>
                             </button>
-                            <button class="c_button with-icon">
                             <button id="al.alarms_controls.rack.now" class="c_button with-icon">
                                 <i class="bi bi-clock"></i>
                             </button>
-                            <button class="c_button with-icon">
+                            <button id="al.alarms_controls.rack.delete" class="c_button with-icon">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </div>
-                            width: 100%;
-                        ">
+                        <div id="al.alarms_controls.live_clock">
                             12:00 PM
                         </div>
-                    </div>s
+                    </div>
                     <div id="al.opts-pane" class="c_flex_list c_flex_v c_pr-light">
                         <div id="al.opts-pane.ring-time">
                             <div>
                                 Ring Time
                             </div>
                             <div id="al.opts-pane.ring-time.time-setter">
-                                ">PM</button>
-                                <button id="..ring-time.meridiem" class="c_button with-icon">
+                                <input id="al.opts-pane.ring-time.hour" class="c_tbox cent" type="textbox" value="12" onemptied="0">
+                                <input id="al.opts-pane.ring-time.minute" class="c_tbox cent" type="textbox" value="00" >
+                                <button id="al.opts-pane.ring-time.meridiem" class="c_button">PM</button>
+                                <button id="al.opts-pane.ring-time.now" class="c_button with-icon">
                                     <i class="bi bi-clock"></i>
                                 </button>
                             </div>
@@ -105,18 +107,9 @@
                         </div>
                         <div>
                             <span>
-                                Snoozing
                                 Priority
                             </span>
-                            <input type="checkbox"/>
-                        </div>
-                        <div>
-                            </span>
-                        <div>
-                            <span>
-                                Snoozing
-                            </span>
-                            <input type="checkbox"/>
+                            <input id="al.opts-pane.priority" type="checkbox"/>
                         </div>
                     </div>
                 </div>
