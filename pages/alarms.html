@@ -111,6 +111,140 @@
                             </span>
                             <input id="al.opts-pane.priority" type="checkbox"/>
                         </div>
+                        <script type="text/javascript">
+                            /** @type {HTMLInputElement} */
+                            let snoozeBox = document.getElementById("al.opts-pane.snooze")
+                            /** @type {HTMLInputElement} */
+                            let snoozeRepeatBox = document.getElementById("al.opts-pane.snooze.repeat")
+
+
+                            
+                            /** @type {HTMLInputElement} */
+                            let hourField = document.getElementById("al.opts-pane.ring-time.hour")
+                            /** @type {HTMLInputElement} */
+                            let minuteField = document.getElementById("al.opts-pane.ring-time.minute")
+                            /** @type {HTMLButtonElement} */
+                            let meridiemBox = document.getElementById("al.opts-pane.ring-time.meridiem")
+                            /** @type {HTMLButtonElement} */
+                            let timeNowBox = document.getElementById("al.opts-pane.ring-time.now")
+
+                            
+                            /** @type {HTMLDivElement} */
+                            let liveClockDiv = document.getElementById("al.alarms_controls.live_clock")
+
+
+
+                            // TODO: probably add this to some common JS.
+                            function clamp(val, low, high) {
+                                return Math.max(Math.min(val, high), low)
+                            }
+
+
+
+                            function _mode_alarms_changeMeridiem(
+                                /** @type {String} */
+                                meridiem
+                            ) {
+                                if (meridiem != null && meridiem.length > 0) {
+                                    let startingChar = meridiem.match("^([a-zA-Z])[Mm]?$").pop()
+                                    if (startingChar != null) {
+                                        switch (startingChar.toUpperCase()) {
+                                            case 'P': meridiemBox.textContent = `PM`; break
+                                            case 'A': meridiemBox.textContent = `AM`; break
+                                        }
+                                    }
+                                } else {
+                                    meridiemBox.textContent = `${meridiemBox.textContent.startsWith("A")? "P": "A"}M`
+                                }
+                            }
+
+
+
+                            function _mode_alarms_paddedSet(field, value, leading) {
+                                field.value = String(value).padStart(leading, "0")
+                            }
+
+
+
+                            function _mode_alarms_textfieldValidation(
+                                /** @type {HTMLInputElement} */
+                                field,
+                                /** @type {int} */
+                                rMin,
+                                /** @type {int} */
+                                rMax,
+                                /** @type {function(int, int) => None} */
+                                success,
+                                /** @type {int} */
+                                defval = rMin
+                            ) {
+                                field.setAttribute("data-lastValue", clamp(defval, rMin, rMax))
+                                field.addEventListener("input", function(event) {
+                                    let textValue = this.value
+                                    /** @type {int} */
+                                    let numValue = this.getAttribute("data-lastValue")
+
+                                    if (textValue == "") {return}
+                                    else if (textValue.match("^\\d*$") == null) {
+                                        this.value = numValue.toString()
+                                    } else {
+                                        numValue = parseInt(textValue)
+                                        let newNumber = clamp(textValue, rMin, rMax)
+
+                                        field.setAttribute("data-lastValue", newNumber)
+                                        this.value = newNumber.toString()
+                                        success?.(newNumber, numValue)
+                                    }
+                                })
+
+                                field.value = rMin.toString()
+                            }
+
+
+
+                            let liveClockInterval = setInterval(function() {
+                                console.log("I'm running every second.")
+                                liveClockDiv.textContent = (new Date()).toLocaleTimeString()
+                            }, 1000)
+
+                            minuteField.value = String(0).padStart(2, '0')
+                            _mode_alarms_changeMeridiem()
+
+                            _mode_alarms_textfieldValidation(
+                                hourField, 1, 12,
+                                function(num, raw) {if (raw > 12) {_mode_alarms_changeMeridiem()}}
+                            )
+
+                            _mode_alarms_textfieldValidation(
+                                minuteField, 0, 59,
+                                function(num) {_mode_alarms_paddedSet(minuteField, num, 2)}
+                            )
+
+
+
+                            addEventListener("beforeunload", function() {
+                                clearInterval(liveClockInterval),
+                                console.log("Please, don't code like Microsoft for Windows 11.")
+                            })
+
+                            snoozeBox.addEventListener("change", function(event) {
+                                snoozeRepeatBox.disabled = !snoozeBox.checked;
+                            })
+
+                            timeNowBox.addEventListener("click", function(event) {
+                                let timeNow = new Date()
+                                let halfHour = (timeNow.getHours() - 1) % 12
+
+                                hourField.value = halfHour + 1
+                                _mode_alarms_paddedSet(minuteField, timeNow.getMinutes(), 2)
+                                _mode_alarms_changeMeridiem(
+                                    (halfHour >= 12)? "PM": "AM"
+                                )
+                            })
+
+                            meridiemBox.addEventListener("click", _mode_alarms_changeMeridiem)
+
+                        </script>
                     </div>
                 </div>
             </div>
