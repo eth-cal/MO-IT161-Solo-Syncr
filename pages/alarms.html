@@ -19,38 +19,31 @@
                     </button>
                 </div>
             </div>
-            <div id="main-view-content"
-                class="c_flex_lay c_flex_h c_flex_main col"
-                style="
-                padding: 10px;
                 gap: 10px;
-                "
-            >
-                <div class="c_flex_list c_flex_v c_pr-dark" style="flex: 1; width: auto; height: 100%; min-width: 300px;">
+            <div id="main-view-content" class="c_flex_lay c_flex_h c_flex_main col">
+                <div id="al.alarms_list" class="c_flex_list c_flex_v c_pr-dark">
+                    <!--
+                    TODO: work on the appearance of this element, then try building the element
                     <button class="c_button alarm-box min-anim">
                         <div class="c_wh-100p" style="text-align: left;">
                             <span class="time-set">12:00 PM</span>
                         </div>
                     </button>
                 </div>
-                <div class="c_flex_lay c_flex_v gapped" style="flex: 1 0;">
+                <div id="al.alarms_controls..container"class="c_flex_lay c_flex_v gapped">
                     <div class="c_flex_lay gapped c_flex_h">
-                        <div class="c_flex_list compact bt_m c_flex_v c_pit_pr-dark">
                             <button class="c_button with-icon">
+                            <button id="al.alarms_controls.rack.new" class="c_button with-icon">
                                 <i class="bi bi-plus-lg"></i>
                             </button>
                             <button class="c_button with-icon">
+                            <button id="al.alarms_controls.rack.now" class="c_button with-icon">
                                 <i class="bi bi-clock"></i>
                             </button>
                             <button class="c_button with-icon">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </div>
-                        <div class="" style="
-                            text-align: right;
-                            align-content: center;
-                            padding-right: 20px;
-                            font-size: 60px;
                             width: 100%;
                         ">
                             12:00 PM
@@ -62,10 +55,6 @@
                                 Ring Time
                             </div>
                             <div id="al.opts-pane.ring-time.time-setter">
-                                <input id="..ring-time.hour" class="c_tbox cent" type="textbox" value="12" onemptied="0">
-                                <input id="..ring-time.minute" class="c_tbox cent" type="textbox" value="00" >
-                                <button id="..ring-time.meridiem" class="c_button" onclick="
-                                event.target.textContent = (event.target.textContent.startsWith(`P`)? `AM`: `PM`)
                                 ">PM</button>
                                 <button id="..ring-time.meridiem" class="c_button with-icon">
                                     <i class="bi bi-clock"></i>
@@ -106,26 +95,23 @@
                             <span>
                                 Snoozing
                             </span>
-                            <input type="checkbox"/>
+                            <input id="al.opts-pane.snooze" type="checkbox"/>
+                        </div>
+                        <div class="indent final">
+                            <span>
+                                Repeating?
+                            </span>
+                            <input id="al.opts-pane.snooze.repeat" type="checkbox" disabled/>
                         </div>
                         <div>
                             <span>
                                 Snoozing
+                                Priority
                             </span>
                             <input type="checkbox"/>
                         </div>
                         <div>
-                            <span>
-                                Snoozing
                             </span>
-                            <input type="checkbox"/>
-                        </div>
-                        <div>
-                            <span>
-                                Snoozing
-                            </span>
-                            <input type="checkbox"/>
-                        </div>
                         <div>
                             <span>
                                 Snoozing
