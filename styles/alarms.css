@@ -283,9 +283,10 @@ input[type="checkbox"].c_switch {
 
 
 
-.c_button.alarm-box {
-    height: 80;
-    padding: 10px;
+#al\.alarms_list > button.alarm-box {
+    height: fit-content;
+    padding: 16px;
+    gap: 10px;
 
     /*
     TODO: Move this to common.css for use with large buttons to
