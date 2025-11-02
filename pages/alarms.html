@@ -209,7 +209,7 @@
                                             value = (value == null? rMin: parseInt(value))
 
                                             let newValue = value * sign
-                                            let clampedValue = clamp(value * sign, rMin, rMax)
+                                            let clampedValue = clamp(newValue, rMin, rMax)
 
                                             field.setAttribute("data-lastValue", clampedValue)
                                             this.value = clampedValue.toString()
@@ -228,10 +228,7 @@
                                 liveClockDiv.textContent = (new Date()).toLocaleTimeString()
                             }, 1000)
 
-                            minuteField.value = "".padStart(2, '0')
                             _mode_alarms_changeMeridiem()
-
-
 
                             ClampedTextFieldWrapper(
                                 hourField, 1, 12,
@@ -242,6 +239,10 @@
                                 minuteField, 0, 59,
                                 function(num) {_mode_alarms_paddedSet(minuteField, num, 2)}
                             )
+
+
+
+                            minuteField.value = "".padStart(2, '0')
 
 
 
