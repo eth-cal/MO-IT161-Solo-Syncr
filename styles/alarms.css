@@ -283,6 +283,12 @@ input[type="checkbox"].c_switch {
 
 
 
+#al\.alarms_list {
+    overflow-y: scroll;
+}
+
+
+
 #al\.alarms_list > button.alarm-box {
     height: fit-content;
     padding: 16px;
