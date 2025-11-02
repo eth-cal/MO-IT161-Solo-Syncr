@@ -295,12 +295,12 @@ input[type="checkbox"].c_switch {
     &.min-anim {
         &:hover {
             transform: 
-                scale(102.5%);
+                scale(101.5%);
         }
 
         &:active {
             transform: 
-                scale(97.5%);
+                scale(99.75%);
         }
     }
 
