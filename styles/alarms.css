@@ -1,0 +1,334 @@
+.c_tbox {
+    font-size: 40;
+    font-family: Archivo;
+    
+    border-radius: 5px;
+    box-shadow: inset 0px 3px 4px var(--shadows-primary-inner-color);
+
+    &.cent {
+        text-align: center;
+    }
+}
+
+
+
+.c {
+    &.flex-start {
+        margin-right: auto;
+    }
+    &.flex-end {
+        margin-left: auto;
+    }
+}
+
+
+
+#main-view-content {
+    padding: 10px;
+    gap: 10px;
+    align-items: center;
+
+    > * {width: auto;}
+
+    @media (max-width: 750px) {
+        flex-direction: column;
+
+        & > * {width: 100%;}
+        & > #al\.alarms-list {height: auto;}
+        & #al\.alarms_controls\.live_clock {font-size: 30px; padding-right: 0;}
+        & #al\.alarms_controls\.rack {
+            flex-direction: row;
+            width: auto;
+            height: fit-content;
+        }
+    }
+}
+
+
+
+#al\.alarms_list {
+    flex: 1;
+    height: 100%;
+    min-width: 300px;
+}
+
+
+
+#al\.alarms_controls\.live_clock {
+    text-align: right;
+    align-content: center;
+    padding-right: 20px;
+    font-size: 60px;
+    width: 100%;
+}
+
+
+
+#al\.opts-pane {
+    padding: 10px;
+    gap: 10px;
+}
+
+
+
+#al\.opts-pane > div {
+    padding: 5px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &.indent {
+        padding: 5px 5px 16px 60px;
+
+        &.final {
+            border-bottom: 1px solid var(--palette-primary-dark-color);
+        }
+    }
+
+    > span {
+        flex-grow: 1;
+        max-height: min-content;
+    }
+
+    > input[type="checkbox"] {
+        width: 40px;
+        height: 20px;
+        appearance: none;
+
+        background-color: #00000045;
+        outline: 1px solid #00000085;
+        border-radius: 4px;
+
+        transition: 
+            transform 200ms,
+            background-color 200ms,
+            outline 200ms;
+
+        &:hover {
+            background-color: #FFFFFF25;
+            outline: 3px solid #00000085;
+            transform: scale(110%);
+        }
+
+        &:active {
+            outline: 1px solid #00000085;
+            transform: scale(95%);
+        }
+
+        &:checked {
+            content: "Test";
+            color: #000000;
+
+            transform: scaleX(110%) translateX(-4x);
+            background-color: #FFFFFFB3;
+            outline: 1px solid #FFFFFFFF;
+
+            &:hover {
+                background-color: #FFFFFF45;
+                outline-width: 3px;
+                transform: scale(110%) translateX(-4px);
+            }
+
+            &:active {
+                outline-width: 1px;
+                transform: scale(95%) translateX(-5px);
+            }
+        }
+
+        &:disabled {
+            background-color: #00000000;
+        }
+    }
+
+    &#al\.opts-pane\.ring-time {
+        display: flex;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        width: 100%;
+        height: 160px;
+
+        > .day-setter, .time-setter {
+            display: flex;
+            flex-direction: row;
+            
+            padding: 5px;
+            gap: 5px;
+            
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+        }
+
+        > .day-setter {
+            > * {
+                aspect-ratio: 1;
+                width: 40px;
+                font-size: 15pt;
+            }
+        }
+
+        > .time-setter {
+            > * {
+                aspect-ratio: 1;
+                width: 60px;
+                font-size: 25pt;
+            }
+        }
+    }
+}
+
+
+
+input[type="checkbox"].c_switch {
+    appearance: none;
+
+    background-color: #00000045;
+    outline: 1px solid #00000085;
+    border-radius: 4px;
+
+    width: 16px;
+    height: 16px;
+
+    transition: 
+        transform 200ms,
+        background-color 200ms,
+        outline 200ms;
+
+    &:hover {
+        background-color: #FFFFFF25;
+        outline: 3px solid #00000085;
+        transform: scale(110%);
+    }
+
+    &:active {
+        outline: 1px solid #00000085;
+        transform: scale(95%);
+    }
+
+    &:checked {
+        color: #000000;
+
+        transform: scale(110%);
+        background-color: #FFFFFFB3;
+        outline: 1px solid #FFFFFFFF;
+
+        &:hover {
+            background-color: #FFFFFF45;
+            outline-width: 3px;
+            transform: scale(110%)
+        }
+
+        &:active {
+            outline-width: 1px;
+            transform: scale(95%)
+        }
+    }
+
+    &.accent:checked {
+        background-color: var(--palette-accent-color-darker);
+    }
+
+    &.long {
+        width: 32px;
+    }
+
+    &.medium {
+        width: 24px;
+        height: 24px;
+
+        &.long {
+            width: 48px;
+        }
+    }
+}
+
+
+
+#al\.opts-pane\.ring-time\.day-setter,
+#al\.opts-pane\.ring-time\.time-setter {
+    display: flex;
+    flex-direction: row;
+    
+    padding: 5px;
+    gap: 5px;
+    
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+
+
+#al\.opts-pane\.ring-time\.day-setter {
+    height: 50000px;
+    > div {
+        font-size: 16;
+        justify-content: center;
+
+        > span {
+            text-align: center;
+        }
+
+        > input[type="checkbox"] {
+            aspect-ratio: 1;
+            width: 40px;
+            height: 40px;
+            font-size: 15pt;
+        }
+    }
+}
+
+
+
+#al\.opts-pane\.ring-time\.time-setter > * {
+    aspect-ratio: 1;
+    width: 60px;
+    height: 60px;
+    font-size: 25pt;
+}
+
+
+
+#al\.alarms_list {
+    overflow-y: scroll;
+}
+
+
+
+#al\.alarms_list > button.alarm-box {
+    height: fit-content;
+    padding: 16px;
+    gap: 10px;
+
+    /*
+    TODO: Move this to common.css for use with large buttons to
+    minimise animations.
+    */
+    &.min-anim {
+        &:hover {
+            transform: 
+                scale(101.5%);
+        }
+
+        &:active {
+            transform: 
+                scale(99.75%);
+        }
+    }
+
+    & * {
+        font-size: 24px;
+    }
+
+    & .alarm-acts {
+        align-items: center;
+        & * {
+            font-size: 16px;
+        }
+    }
+}

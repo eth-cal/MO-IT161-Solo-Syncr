@@ -243,6 +243,12 @@ Pair with .c_flex_h or .c_flex_v to change their direction*/
     > .c_button {
         font-size: 10px;
     }
+    &.bt_m > .c_button {
+        font-size: 16px;
+    }
+    &.bt_l > .c_button {
+        font-size: 24px;
+    }
 }
 
 
@@ -265,11 +271,14 @@ headers and footers */
     display: flex;
 
     flex: 1;
-    flex-grow: 1;
     flex-direction: column;
 
     height: auto;
     overflow-y: auto;
+
+    &.col {
+        flex-direction: row;
+    }
 }
 
 

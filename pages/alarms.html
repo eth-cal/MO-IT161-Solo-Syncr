@@ -1,0 +1,273 @@
+<html>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/styles/common.css"/>
+    <link rel="stylesheet" href="/styles/alarms.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo"/>
+
+    <body>
+         <div id="embed_top_div" class="c_wh-100p">
+            <div class="mv_topbar">
+                <div class="title">
+                    Alarms
+                </div>
+                <div id="mv.edit.topbar" class="opts c_flex_list c_flex_h">
+                    <button class="c_button entry">
+                        <i class="bi bi-funnel"></i>Filters
+                    </button>
+                </div>
+            </div>
+            <div id="main-view-content" class="c_flex_lay c_flex_h c_flex_main col">
+                <div id="al.alarms_list" class="c_flex_list c_flex_v c_pr-dark">
+                    <!--
+                    TODO: work on the appearance of this element, then try building the element
+                    in JS. "style" attribute this all you want, just remove this when the thing is
+                    done.
+                    -->
+                    <button class="c_button alarm-box min-anim">
+                        <div class="c_flex_lay gapped">
+                            <div>Title of alarm...</div><div class="c flex-end">12:00 PM</div>
+                        </div>
+                        <hr class="common"/>
+                        <div class="c_flex_lay gapped alarm-acts">
+                            <div class="c flex-start">S, M, T, W, TH, F, SA</div><input type="checkbox" class="c_switch accent medium long"/>
+                        </div>
+                    </button>
+                </div>
+                <div id="al.alarms_controls..container"class="c_flex_lay c_flex_v gapped">
+                    <div class="c_flex_lay gapped c_flex_h">
+                        <div id="al.alarms_controls.rack" class="c_flex_list compact bt_m c_flex_v c_pit_pr-dark">
+                            <button id="al.alarms_controls.rack.new" class="c_button with-icon">
+                                <i class="bi bi-plus-lg"></i>
+                            </button>
+                            <button id="al.alarms_controls.rack.now" class="c_button with-icon">
+                                <i class="bi bi-clock"></i>
+                            </button>
+                            <button id="al.alarms_controls.rack.delete" class="c_button with-icon">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                        <div id="al.alarms_controls.live_clock">
+                            12:00 PM
+                        </div>
+                    </div>
+                    <div id="al.opts-pane" class="c_flex_list c_flex_v c_pr-light">
+                        <div id="al.opts-pane.ring-time">
+                            <div>
+                                Ring Time
+                            </div>
+                            <div id="al.opts-pane.ring-time.time-setter">
+                                <input id="al.opts-pane.ring-time.hour" class="c_tbox cent" type="textbox" value="12" onemptied="0">
+                                <input id="al.opts-pane.ring-time.minute" class="c_tbox cent" type="textbox" value="00" >
+                                <button id="al.opts-pane.ring-time.meridiem" class="c_button">PM</button>
+                                <button id="al.opts-pane.ring-time.now" class="c_button with-icon">
+                                    <i class="bi bi-clock"></i>
+                                </button>
+                            </div>
+                            <div id="al.opts-pane.ring-time.day-setter">
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input id="al..day-setter.sun" type="checkbox" class="c_switch"/>
+                                    <span>S</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input id="al..day-setter.mon" type="checkbox" class="c_switch"/>
+                                    <span>M</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input id="al..day-setter.tue" type="checkbox" class="c_switch"/>
+                                    <span>T</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input id="al..day-setter.wed" type="checkbox" class="c_switch"/>
+                                    <span>W</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input id="al..day-setter.thu" type="checkbox" class="c_switch"/>
+                                    <span>TH</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input id="al..day-setter.fri" type="checkbox" class="c_switch"/>
+                                    <span>F</span>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <input id="al..day-setter.sat" type="checkbox" class="c_switch"/>
+                                    <span>SA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <span>
+                                Snoozing
+                            </span>
+                            <input id="al.opts-pane.snooze" type="checkbox"/>
+                        </div>
+                        <div class="indent final">
+                            <span>
+                                Repeating?
+                            </span>
+                            <input id="al.opts-pane.snooze.repeat" type="checkbox" disabled/>
+                        </div>
+                        <div>
+                            <span>
+                                Priority
+                            </span>
+                            <input id="al.opts-pane.priority" type="checkbox"/>
+                        </div>
+                        <script type="text/javascript">
+                            const regexSignedInteger = /^(?<sign>-)?(?<value>\d+)*$/
+
+                            /** @type {HTMLInputElement} */
+                            let snoozeBox = document.getElementById("al.opts-pane.snooze")
+                            /** @type {HTMLInputElement} */
+                            let snoozeRepeatBox = document.getElementById("al.opts-pane.snooze.repeat")
+
+
+                            
+                            /** @type {HTMLInputElement} */
+                            let hourField = document.getElementById("al.opts-pane.ring-time.hour")
+                            /** @type {HTMLInputElement} */
+                            let minuteField = document.getElementById("al.opts-pane.ring-time.minute")
+                            /** @type {HTMLButtonElement} */
+                            let meridiemBox = document.getElementById("al.opts-pane.ring-time.meridiem")
+                            /** @type {HTMLButtonElement} */
+                            let timeNowBox = document.getElementById("al.opts-pane.ring-time.now")
+
+                            
+                            /** @type {HTMLDivElement} */
+                            let liveClockDiv = document.getElementById("al.alarms_controls.live_clock")
+
+
+
+                            // TODO: probably add this to some common JS.
+                            function clamp(val, low, high) {
+                                return Math.max(Math.min(val, high), low)
+                            }
+
+
+
+                            function _mode_alarms_changeMeridiem(
+                                /** @type {String} */
+                                meridiem
+                            ) {
+                                if (meridiem != null && meridiem.length > 0) {
+                                    let startingChar = meridiem.match("^([a-zA-Z])[Mm]?$").pop()
+                                    if (startingChar != null) {
+                                        switch (startingChar.toUpperCase()) {
+                                            case 'P': meridiemBox.textContent = `PM`; break
+                                            case 'A': meridiemBox.textContent = `AM`; break
+                                        }
+                                    }
+                                } else {
+                                    meridiemBox.textContent = `${meridiemBox.textContent.startsWith("A")? "P": "A"}M`
+                                }
+                            }
+
+
+
+                            function _mode_alarms_paddedSet(field, value, leading) {
+                                field.value = String(value).padStart(leading, "0")
+                            }
+
+
+
+                            /* todo: maybe this too */
+                            function ClampedTextFieldWrapper(
+                                /** @type {HTMLInputElement} */
+                                field,
+                                /** @type {int} */
+                                rMin,
+                                /** @type {int} */
+                                rMax,
+                                /** @type {function(int, int) => None} */
+                                onValidChange,
+                                /** @type {int} */
+                                defval = rMin
+                            ) {
+                                if (field.hasAttribute("data-lastValue")) {
+                                    console.log(`Text field ${field.name}[${field.id}] is possibly controlled by a wrapper already.`)
+                                }
+
+                                field.setAttribute("data-lastValue", clamp(defval, rMin, rMax))
+                                field.addEventListener("input", function(event) {
+                                    if (this.value == "") {return}
+                                    
+                                    /** @type {int} */
+                                    let lastValue = this.getAttribute("data-lastValue")
+                                    let results = regexSignedInteger.exec(this.value)
+
+                                    if (results == null) {
+                                        this.value = lastValue.toString()
+                                    } else {
+                                        let {sign, value} = results.groups
+
+                                        if (sign != null && value == null) {
+                                            return
+                                        } else {
+                                            sign = parseInt((sign == null? "1": sign.padEnd(2, "1")))
+                                            value = (value == null? rMin: parseInt(value))
+
+                                            let newValue = value * sign
+                                            let clampedValue = clamp(newValue, rMin, rMax)
+
+                                            field.setAttribute("data-lastValue", clampedValue)
+                                            this.value = clampedValue.toString()
+                                            onValidChange?.(clampedValue, newValue)
+                                        }
+                                    }
+                                })
+
+                                field.value = rMin.toString()
+                            }
+
+
+
+                            let liveClockInterval = setInterval(function() {
+                                console.log("I'm running every second.")
+                                liveClockDiv.textContent = (new Date()).toLocaleTimeString()
+                            }, 1000)
+
+                            _mode_alarms_changeMeridiem()
+
+                            ClampedTextFieldWrapper(
+                                hourField, 1, 12,
+                                function(num, raw) {if (raw > 12) {_mode_alarms_changeMeridiem()}}
+                            )
+
+                            ClampedTextFieldWrapper(
+                                minuteField, 0, 59,
+                                function(num) {_mode_alarms_paddedSet(minuteField, num, 2)}
+                            )
+
+
+
+                            minuteField.value = "".padStart(2, '0')
+
+
+
+                            addEventListener("beforeunload", function() {
+                                clearInterval(liveClockInterval),
+                                console.log("Please, don't code like Microsoft for Windows 11.")
+                            })
+
+                            snoozeBox.addEventListener("change", function(event) {
+                                snoozeRepeatBox.disabled = !snoozeBox.checked;
+                            })
+
+                            timeNowBox.addEventListener("click", function(event) {
+                                let timeNow = new Date()
+                                let halfHour = (timeNow.getHours() - 1) % 12
+
+                                hourField.value = halfHour + 1
+                                _mode_alarms_paddedSet(minuteField, timeNow.getMinutes(), 2)
+                                _mode_alarms_changeMeridiem(
+                                    (halfHour >= 12)? "PM": "AM"
+                                )
+                            })
+
+                            meridiemBox.addEventListener("click", _mode_alarms_changeMeridiem)
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
