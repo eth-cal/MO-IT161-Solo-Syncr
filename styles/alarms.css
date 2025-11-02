@@ -179,6 +179,9 @@ input[type="checkbox"].c_switch {
     outline: 1px solid #00000085;
     border-radius: 4px;
 
+    width: 16px;
+    height: 16px;
+
     transition: 
         transform 200ms,
         background-color 200ms,
@@ -211,6 +214,23 @@ input[type="checkbox"].c_switch {
         &:active {
             outline-width: 1px;
             transform: scale(95%)
+        }
+    }
+
+    &.accent:checked {
+        background-color: var(--palette-accent-color-darker);
+    }
+
+    &.long {
+        width: 32px;
+    }
+
+    &.medium {
+        width: 24px;
+        height: 24px;
+
+        &.long {
+            width: 48px;
         }
     }
 }
