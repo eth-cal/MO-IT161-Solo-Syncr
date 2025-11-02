@@ -12,6 +12,17 @@
 
 
 
+.c {
+    &.flex-start {
+        margin-right: auto;
+    }
+    &.flex-end {
+        margin-left: auto;
+    }
+}
+
+
+
 #main-view-content {
     padding: 10px;
     gap: 10px;
