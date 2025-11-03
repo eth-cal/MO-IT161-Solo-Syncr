@@ -89,7 +89,6 @@ Centring options:
 /* #region Textbox */
 
 input[type="textbox"] {
-    font-size: 40;
     font-family: Archivo;
     
     border-radius: 5px;
