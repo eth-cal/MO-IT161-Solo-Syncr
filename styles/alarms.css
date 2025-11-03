@@ -5,7 +5,7 @@
 
     > * {width: auto;}
 
-    @media (max-width: 750px) {
+    @media (max-width: 850px) {
         flex-direction: column;
 
         & > * {width: 100%;}
@@ -24,7 +24,7 @@
 #al\.alarms_list {
     flex: 1;
     height: 100%;
-    min-width: 300px;
+    overflow-y: auto;
 }
 
 
@@ -40,8 +40,10 @@
 
 
 #al\.opts-pane {
+    flex-shrink: 0;
     padding: 10px;
-    gap: 10px;
+    gap: 10px; 
+    min-width: 460px;
 }
 
 
@@ -172,21 +174,25 @@
 
 
 
-#al\.alarms_list {
-    overflow-y: scroll;
-}
-
-
-
 #al\.alarms_list > button.alarm-box {
     height: fit-content;
     padding: 16px;
     gap: 10px;
 
-    /*
-    TODO: Move this to common.css for use with large buttons to
-    minimise animations.
-    */
+
+    & .alarm-title {
+        text-overflow: ellipsis;
+        text-wrap-mode: nowrap;
+
+        flex-shrink: 1;
+        text-align: left;
+    }
+
+    & .alarm-time {
+        min-width: 110px;
+        text-align: right;
+        flex: 0 0;
+    }
 
     & * {
         font-size: 24px;
