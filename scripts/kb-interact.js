@@ -7,6 +7,111 @@ const DialogTitleDecor = Object.freeze({
 
 
 /** TODO: make common */
+class LiveTimeDisplay {
+    constructor(format) {
+        /** @type {Intl.DateTimeFormat} */
+        this.locale = format || new Intl.DateTimeFormat(undefined, {timeStyle: "medium", dateStyle: "long"})
+
+        /** @type {number} */
+        this.intervalId = 0
+
+        /** @type {number} */
+        this.intervalLength = 1000
+
+        /** @type {[HTMLElement]} */
+        this.displayables = []
+        
+        /** @type {boolean} */
+        this.enabled = false
+
+        /** @type {Date} */
+        this.lastTimeRecorded = new Date()
+
+        let ltd = this
+
+        function closeHandler() {
+            ltd.stop()
+            window.removeEventListener(closeHandler)
+        }
+
+        window.addEventListener("close", closeHandler)
+    }
+
+    
+    
+    handler() {
+        let newDate = Date.now()
+        let currentTime = this.locale.format(Date.now())
+
+        this.lastTimeRecorded = newDate
+        this.displayables.forEach((displayable) => {
+            displayable.textContent = currentTime
+        })
+    }
+
+
+
+    addElement(element) {
+        if (this.displayables.includes(element)) {return}
+
+        this.displayables.push(element)
+    }
+
+
+
+    start() {
+        if (this.enabled == true) {return}
+        
+        let ltd = this
+        this.intervalId = setInterval(() => {ltd.handler()}, ltd.intervalLength)
+        this.enabled = true
+    }
+
+
+
+    stop() {
+        if (this.enabled == false) {return}
+
+        clearInterval(this.intervalId)
+        this.intervalId = 0
+        this.enabled = false
+    }
+
+
+
+    restart() {
+        if (this.enabled == false) {return}
+        this.stop()
+        this.start()
+    }
+
+
+
+    /**
+     * 
+     */
+    getNow() {
+        return new Date(this.lastTimeRecorded)
+    }
+
+
+
+    /**
+     * @param {number} length 
+     */
+    setIntervalLength(length) {
+        length = Math.max(length, 0)
+
+        if (this.intervalLength != length) {
+            this.intervalLength = length
+            this.restart()
+        }
+    }
+}
+
+
+
+/** TODO: make common */
 class BasicDialogWrapper {
     /**
      * @param {HTMLDialogElement} dialog 
@@ -178,6 +283,10 @@ class KanbanColumnDialogWrapper extends BasicDialogWrapper {
 
 
 
+const clock = new LiveTimeDisplay(); {
+    clock
+}
+
 /** @type {HTMLDialogElement} */
 const taskInfoDialog = document.getElementById("dialog-taskman")
 /** @type {HTMLDialogElement} */
@@ -240,7 +349,17 @@ function kanban_extractFromElement(element) {
 
 
 
+/**
+ * 
+ */
+
+
+
 {
+    clock.addElement(document.getElementById("kb.control-bar.live-time"))
+    clock.setIntervalLength(1000)
+    clock.start()
+
     document.querySelectorAll(".kb-task").forEach((taskEntry) => {
         let taskInfo = kanban_extractFromElement(taskEntry)
 
