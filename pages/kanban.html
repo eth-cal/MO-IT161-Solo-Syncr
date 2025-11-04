@@ -271,5 +271,55 @@
                 </div>
             </div>
         </div>
+
+        <dialog id="dialog-taskman" class="popup cent">
+            <i id="dialog_close" class="close bi bi-x-lg"></i>
+            <div id="dialog_contents" class="window c_flex_lay c_flex_v gapped c lift curvy">
+                <span id="dialog_title" class="title">Options for "Task Title"</span>
+                <div class="dialog-list c_flex_list c_flex_v compact">
+                    <div id="dialog-task_title" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Name</span>
+                        <input type="textbox"/>
+                    </div>
+                    <div id="dialog-task_desc" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Description</span>
+                        <textarea></textarea>
+                    </div>
+                    <div id="dialog-task_deadline" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Deadline</span>
+                        <input type="textbox"/>
+                    </div>
+                </div>
+                <div class="dialog-actions c_flex_lay gapped">
+                    <button class="c_button c flex-end">
+                        Save
+                    </button>
+                    <button class="c_button">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="dialog-colman" class="popup cent">
+            <i id="dialog_close" class="close bi bi-x-lg"></i>
+            <div id="dialog_contents" class="window c_flex_lay c_flex_v gapped c lift curvy">
+                <span id="dialog_title" class="title">Options for "Column"</span>
+                <div class="dialog-list c_flex_list c_flex_v compact">
+                    <div id="dialog-col_title" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Name</span>
+                        <input type="textbox"/>
+                    </div>
+                </div>
+                <div class="dialog-actions c_flex_lay gapped">
+                    <button class="c_button c flex-end">
+                        Save
+                    </button>
+                    <button class="c_button">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </dialog>
     </div>
 </html>
