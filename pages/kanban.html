@@ -1,0 +1,307 @@
+<html>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/styles/common.css"/>
+    <link rel="stylesheet" href="/styles/kanban.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo"/>
+
+
+
+    <!--
+    I think it's fine to use the same IDs multiple times for elements
+    like the column and tasks? I just primarily use querySelector[All]
+    anyways, while getElementById provides a shortcut for unique elements
+    like ID'd containers, which could inevitably contain many elements
+    that are structurally and visually the same, so like:
+
+    document
+        .getElementById("search-menu.main.results-pane")
+        ?.querySelectorAll("#search\\.result-item")
+    
+    will allow me to manage any elements with search.result-item as the
+    id, so long as they are under the "search-menu.main.results-pane"
+    container. if any result item elements are outside the container,
+    they are ignored.
+
+    It works well and is closer to what I would prefer doing in other
+    software, like game engines.
+    -->
+
+    
+
+    <div id="main-view-content" class="c_flex_lay c_flex_h">
+       <div id="embed_top_div" class="c_wh-100p">
+            <div class="mv_topbar">
+                <div class="title">
+                    Kanban
+                </div>
+            </div>
+            <div id="main-view-content" class="c_flex_lay c_flex_v">
+                <div id="kb.control-bar" class="c_flex_lay">
+                    <div id="kb.control-bar.live-time">...</div>
+                    <div class="c_flex_list compact bt_m c_flex_h c_pr-dark">
+                        <button id="kb.control-bar.opts.add" class="c_button with-icon">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="kb.taskboard">
+                    <div id="kb.taskboard.content" class="c_flex_list c_flex_h">
+                        <div id="kb.taskboard.content.new-start" class="kanban-new-col">
+                            <button class="c_button">
+                                <i class="bi bi-plus-lg"></i>
+                                <span>New Column</span>
+                            </button>
+                        </div>
+                        <div id="kb.taskboard.content.columns" class="c_flex_lay gapped c_flex_h">
+                            <div id="kb.column" class="c curvy lift kb-entry c_flex_lay gapped c_flex_v">
+                                <span class="kb-col-title">Backlog</span>
+                                <div id="kb.column.actions" class="c_flex_list square compact c_pr-dark">
+                                    <button data-act="edit" class="c_button with-icon">
+                                        <i class="bi bi-gear"></i>
+                                    </button>
+                                    <button data-act="delete" class="c_button with-icon">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Could start this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Could start this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="kb-task-desc">Maybe not</div>
+                                    </div>
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Could start this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Could start this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Could start this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="kb-task-desc">Ok fine</div>  
+                                    </div>
+                                </div>
+                                <button id="kb.column.new-task" class="c_button entry"><i class="bi bi-plus-lg"></i>New Task</button>
+                            </div>
+                            <div id="kb.column" class="c curvy lift kb-entry c_flex_lay gapped c_flex_v">
+                                <span class="kb-col-title">In Progress</span>
+                                <div id="kb.column.actions" class="c_flex_list square compact c_pr-dark">
+                                    <button data-act="edit" class="c_button with-icon">
+                                        <i class="bi bi-gear"></i>
+                                    </button>
+                                    <button data-act="delete" class="c_button with-icon">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Must do this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="kb-task-deadline pending">
+                                            <i class="bi bi-clock"></i>
+                                            <span>Done by November 16, 2025, 8:00 PM</span>
+                                        </div>
+                                    </div>
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Must do this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="kb-task-deadline pending">
+                                            <i class="bi bi-clock"></i>
+                                            <span>Done by November 10, 2025, 5:00 PM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="kb.column.new-task" class="c_button entry"><i class="bi bi-plus-lg"></i>New Task</button>
+                            </div>
+                            <div id="kb.column" class="c curvy lift kb-entry c_flex_lay gapped c_flex_v">
+                                <span class="kb-col-title">Paused</span>
+                                <div id="kb.column.actions" class="c_flex_list square compact c_pr-dark">
+                                    <button data-act="edit" class="c_button with-icon">
+                                        <i class="bi bi-gear"></i>
+                                    </button>
+                                    <button data-act="delete" class="c_button with-icon">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Should continue this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Should continue this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Should continue this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Should continue this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="kb.column.new-task" class="c_button entry"><i class="bi bi-plus-lg"></i>New Task</button>
+                            </div>
+                            <div id="kb.column" class="c curvy lift kb-entry c_flex_lay gapped c_flex_v">
+                                <span class="kb-col-title">Done</span>
+                                <div id="kb.column.actions" class="c_flex_list square compact c_pr-dark">
+                                    <button data-act="edit" class="c_button with-icon">
+                                        <i class="bi bi-gear"></i>
+                                    </button>
+                                    <button data-act="delete" class="c_button with-icon">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="c_flex_lay gapped c_flex_v">
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Had done this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="kb-task c curvy lift c_flex_lay c_flex_v gapped">
+                                        <div class="kb-task-top c_flex_lay c_flex_h">
+                                            <div class="kb-task-name">Had done this</div>
+                                            <div class="kb-task-acts">
+                                                <button class="c_button with-icon"><i class="bi bi-trash"></i></button>
+                                                <button data-act="edit" class="c_button with-icon"><i class="bi bi-pencil"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="kb-task-deadline late">
+                                            <i class="bi bi-clock"></i>
+                                            <span>Done by November 1, 2025, 5:00 PM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="kb.column.new-task" class="c_button entry"><i class="bi bi-plus-lg"></i>New Task</button>
+                            </div>
+                        </div>
+                        <div id="kb.taskboard.content.new-end" class="kanban-new-col">
+                            <button class="c_button">
+                                <i class="bi bi-plus-lg"></i>
+                                <span>New Column</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <dialog id="dialog-taskman" class="popup cent">
+            <i id="dialog_close" class="close bi bi-x-lg"></i>
+            <div id="dialog_contents" class="window c_flex_lay c_flex_v gapped c lift curvy">
+                <span id="dialog_title" class="title">Options for "Task Title"</span>
+                <div class="dialog-list c_flex_list c_flex_v compact">
+                    <div id="dialog-task_title" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Name</span>
+                        <input type="textbox"/>
+                    </div>
+                    <div id="dialog-task_desc" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Description</span>
+                        <textarea></textarea>
+                    </div>
+                    <div id="dialog-task_deadline" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Deadline</span>
+                        <input type="textbox"/>
+                    </div>
+                </div>
+                <div class="dialog-actions c_flex_lay gapped">
+                    <button class="c_button c flex-end">
+                        Save
+                    </button>
+                    <button class="c_button">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="dialog-colman" class="popup cent">
+            <i id="dialog_close" class="close bi bi-x-lg"></i>
+            <div id="dialog_contents" class="window c_flex_lay c_flex_v gapped c lift curvy">
+                <span id="dialog_title" class="title">Options for "Column"</span>
+                <div class="dialog-list c_flex_list c_flex_v compact">
+                    <div id="dialog-col_title" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Name</span>
+                        <input type="textbox"/>
+                    </div>
+                </div>
+                <div class="dialog-actions c_flex_lay gapped">
+                    <button class="c_button c flex-end">
+                        Save
+                    </button>
+                    <button class="c_button">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </dialog>
+    </div>
+
+    <script type="text/javascript" src="/scripts/kb-interact.js"></script>
+</html>

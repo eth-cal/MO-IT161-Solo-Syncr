@@ -88,11 +88,15 @@ Centring options:
 
 /* #region Textbox */
 
-input[type="textbox"] {
+input[type="textbox"], textarea {
     font-family: Archivo;
     
+    padding: 4px;
     border-radius: 5px;
     box-shadow: inset 0px 3px 4px var(--shadows-primary-inner-color);
+
+    width: auto;
+    min-width: 20px;
 
     &.cent {
         text-align: center;
@@ -170,6 +174,57 @@ input[type="checkbox"] {
 
 
 
+dialog.popup {
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000080;
+
+    &.cent {
+        align-content: center;
+        justify-items: center;
+    }
+
+    & > .close {
+        top: 1;
+        right: 1;
+
+        margin: 16 16 0 0;
+        color: white;
+
+        position: absolute;
+        font-size: 30px;
+    }
+
+    & > div.window {
+        position: relative;
+
+        background-color: white;
+        padding: 16px;
+
+        width: fit-content;
+        height: max-content;
+        min-width: 250px;
+        min-height: 60px;
+
+        & > span.title {
+            font-size: var(--txt-tag);
+        }
+
+        & .dialog-list {
+            background-color: var(--palette-primary-color);
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        & > div.dialog-actions {
+            min-height: 24px;
+            width: 100%;
+        }
+    }
+}
+
+
+
 .c {
     &.flex-start {
         margin-right: auto;
@@ -177,7 +232,18 @@ input[type="checkbox"] {
     &.flex-end {
         margin-left: auto;
     }
+
+
+
+    &.curvy/*,&.button */ {
+        border-radius: 4px;
+    }
+
+    &.lift/*,&.button*/ {
+        box-shadow: 0px 3px 3px var(--shadows-buttons-idle-color);
+    }
 }
+
 
 
 /* #region Common styling */
@@ -349,11 +415,22 @@ Pair with .c_flex_h or .c_flex_v to change their direction*/
     > .c_button {
         font-size: 10px;
     }
+    
     &.bt_m > .c_button {
         font-size: 16px;
     }
     &.bt_l > .c_button {
         font-size: 24px;
+    }
+
+    & > .list-item {
+        background-color: white;
+
+        border-radius: 6px;
+        padding: 8px;
+        width: 100%;
+        min-height: 30px;
+        flex: 1 0;
     }
 }
 

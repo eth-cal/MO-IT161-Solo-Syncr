@@ -1,0 +1,95 @@
+:root {
+    --txt_tiny : 10px;
+    --txt_def : 14px;
+    --txt_tag : 20px;
+    --txt_title : 24px;
+
+    --palette-primary-light-color : #FFFFFF
+}
+
+#main-view-content {
+    height: 100%;
+}
+
+
+
+.kb-entry {
+    padding: 10px;
+    
+    & > .kb-col-title {
+        font-size: var(--txt_tag);
+    }
+
+    & .kb-task {
+        background-color: var(--palette-primary-light-color);
+        padding: 8px;
+
+        & .kb-task-name {
+            align-content: center;
+        }
+
+        & .kb-task-acts {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            margin-left: auto;
+        }
+
+        & .kb-task-deadline {
+            gap: 10px;
+            font-size: var(--txt_tiny);
+
+            &.pending {
+                color: chocolate;
+            }
+
+            &.late {
+                color: red;
+            }
+        }
+
+        & .kb-task-desc {
+            font-size: var(--txt_def);
+            text-indent: 16px;
+        }
+    }
+}
+
+
+
+#kb\.control-bar {
+    padding: 10px;
+    width: 100%;
+}
+
+#kb\.control-bar\.live-time {
+    text-align: right;
+    align-content: center;
+    flex: 1 0;
+    margin-right: 20px;
+}
+
+
+#kb\.taskboard {
+    flex: 1 1;
+    overflow: auto;
+}
+
+
+#kb\.taskboard\.content {
+    min-width: min-content;
+    min-height: 100%;
+    background-color:  var(--palette-primary-dark-color);
+    border-radius: 0;
+
+    & > #kb\.taskboard\.content\.columns .kb-entry {
+        height: max-content;
+        min-height: 60px;
+        background-color: var(--palette-primary-color);
+        width : 240px;
+    }
+    
+    & > .kanban-new-col *{
+        width : 120px;
+    }
+}
