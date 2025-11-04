@@ -80,9 +80,6 @@ class KanbanColumnDialogWrapper extends cmdl.BasicDialogWrapper {
 
 
 
-const clock = new LiveTimeDisplay(); {
-    clock
-}
 const clock = new cmdl.LiveTimeDisplay();
 
 /** @type {HTMLDialogElement} */
