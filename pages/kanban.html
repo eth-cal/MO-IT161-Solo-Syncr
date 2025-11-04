@@ -4,6 +4,30 @@
     <link rel="stylesheet" href="/styles/kanban.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo"/>
 
+
+
+    <!--
+    I think it's fine to use the same IDs multiple times for elements
+    like the column and tasks? I just primarily use querySelector[All]
+    anyways, while getElementById provides a shortcut for unique elements
+    like ID'd containers, which could inevitably contain many elements
+    that are structurally and visually the same, so like:
+
+    document
+        .getElementById("search-menu.main.results-pane")
+        ?.querySelectorAll("#search\\.result-item")
+    
+    will allow me to manage any elements with search.result-item as the
+    id, so long as they are under the "search-menu.main.results-pane"
+    container. if any result item elements are outside the container,
+    they are ignored.
+
+    It works well and is closer to what I would prefer doing in other
+    software, like game engines.
+    -->
+
+    
+
     <div id="main-view-content" class="c_flex_lay c_flex_h">
        <div id="embed_top_div" class="c_wh-100p">
             <div class="mv_topbar">
