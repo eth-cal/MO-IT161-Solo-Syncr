@@ -13,19 +13,6 @@
 
 
 
-/*TODO: add this to common.css*/
-.c {
-    &.curvy/*,&.button */ {
-        border-radius: 4px;
-    }
-
-    &.lift/*,&.button*/ {
-        box-shadow: 0px 3px 3px var(--shadows-buttons-idle-color);
-    }
-}
-
-
-
 .kb-entry {
     padding: 10px;
     
@@ -59,6 +46,11 @@
             &.late {
                 color: red;
             }
+        }
+
+        & .kb-task-desc {
+            font-size: var(--txt_def);
+            text-indent: 16px;
         }
     }
 }
