@@ -96,35 +96,6 @@
 
         width: 100%;
         height: 160px;
-
-        > .day-setter, .time-setter {
-            display: flex;
-            flex-direction: row;
-            
-            padding: 5px;
-            gap: 5px;
-            
-            align-items: center;
-            justify-content: center;
-
-            width: 100%;
-        }
-
-        > .day-setter {
-            > * {
-                aspect-ratio: 1;
-                width: 40px;
-                font-size: 15pt;
-            }
-        }
-
-        > .time-setter {
-            > * {
-                aspect-ratio: 1;
-                width: 60px;
-                font-size: 25pt;
-            }
-        }
     }
 }
 
@@ -178,7 +149,6 @@
     height: fit-content;
     padding: 16px;
     gap: 10px;
-
 
     & .alarm-title {
         text-overflow: ellipsis;
