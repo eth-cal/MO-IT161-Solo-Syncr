@@ -52,36 +52,43 @@ export class LiveTimeDisplay {
 
     addElement(element) {
         if (this.displayables.includes(element)) {return}
-
         this.displayables.push(element)
+        return this
     }
 
 
 
     start() {
-        if (this.enabled == true) {return}
+        if (this.enabled != true) {
+            let ltd = this
+            this.intervalId = setInterval(() => {ltd.handler()}, ltd.intervalLength)
+            this.enabled = true
+        }
         
-        let ltd = this
-        this.intervalId = setInterval(() => {ltd.handler()}, ltd.intervalLength)
-        this.enabled = true
+        return this
     }
 
 
 
     stop() {
-        if (this.enabled == false) {return}
+        if (this.enabled != false) {
+            clearInterval(this.intervalId)
+            this.intervalId = 0
+            this.enabled = false
+        }
 
-        clearInterval(this.intervalId)
-        this.intervalId = 0
-        this.enabled = false
+        return this
     }
 
 
 
     restart() {
-        if (this.enabled == false) {return}
-        this.stop()
-        this.start()
+        if (this.enabled != false) {
+            this.stop()
+            this.start()
+        }
+        
+        return this
     }
 
 
@@ -105,6 +112,8 @@ export class LiveTimeDisplay {
             this.intervalLength = length
             this.restart()
         }
+
+        return this
     }
 }
 
