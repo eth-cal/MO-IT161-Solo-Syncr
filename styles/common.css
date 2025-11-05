@@ -376,6 +376,10 @@ dialog.popup {
     &.gapped {
         gap: 10px;
     }
+
+    &.padded {
+        padding: 8px;
+    }
 }
 
 
