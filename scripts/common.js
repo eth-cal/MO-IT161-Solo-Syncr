@@ -50,6 +50,10 @@ export class LiveTimeDisplay {
 
 
 
+    /**
+     * @param {HTMLElement} element 
+     * @returns {LiveTimeDisplay}
+     */
     addElement(element) {
         if (this.displayables.includes(element)) {return}
         this.displayables.push(element)
@@ -58,6 +62,9 @@ export class LiveTimeDisplay {
 
 
 
+    /**
+     * @returns {LiveTimeDisplay}
+     */
     start() {
         if (this.enabled != true) {
             let ltd = this
@@ -70,6 +77,9 @@ export class LiveTimeDisplay {
 
 
 
+    /**
+     * @returns {LiveTimeDisplay}
+     */
     stop() {
         if (this.enabled != false) {
             clearInterval(this.intervalId)
@@ -82,6 +92,9 @@ export class LiveTimeDisplay {
 
 
 
+    /**
+     * @returns {LiveTimeDisplay}
+     */
     restart() {
         if (this.enabled != false) {
             this.stop()
@@ -94,7 +107,7 @@ export class LiveTimeDisplay {
 
 
     /**
-     * 
+     * @returns {number}
      */
     getNow() {
         return new Date(this.lastTimeRecorded)
@@ -104,6 +117,7 @@ export class LiveTimeDisplay {
 
     /**
      * @param {number} length 
+     * @returns {LiveTimeDisplay}
      */
     setIntervalLength(length) {
         length = Math.max(length, 0)
