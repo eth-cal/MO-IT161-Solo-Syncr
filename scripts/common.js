@@ -223,3 +223,17 @@ export class BasicDialogWrapper {
     }
     hide() {return this.dialog.close()}
 }
+
+
+
+export let math = {
+    /**
+     * @param {number} val 
+     * @param {number} low 
+     * @param {number} high 
+     * @returns {number}
+     */
+    clamp : function (val, low, high) {
+        return Math.max(Math.min(val, high), low)
+    }
+}
