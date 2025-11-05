@@ -1,8 +1,4 @@
 :root {
-    /* TODO: More color variables to standardise palette */
-    --buttons-generic: #EFEFEF;
-    --buttons-accept: #7DC132;
-
     --palette-primary-color: #eee2c9;
     --palette-primary-dark-color: #686360;
     
@@ -14,7 +10,6 @@
     --shadows-primary-inner-color: #25151596;
 
     --shadows-sidebar-drawover: #7F96A2;
-    --shadows-buttons-idle-color: #5f3a3a70;
     --shadows-buttons-idle-color: #5f3a3a70;
     --shadows-buttons-hover-color: #8d7b5a42;
     --shadows-buttons-press-color: #ffffff;
