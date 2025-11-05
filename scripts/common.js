@@ -1,3 +1,11 @@
+export const DialogTitleDecor = Object.freeze({
+    NONE : -1,
+    NEW : 0,
+    EDIT : 1,
+})
+
+
+
 export class LiveTimeDisplay {
     constructor(format) {
         /** @type {Intl.DateTimeFormat} */
