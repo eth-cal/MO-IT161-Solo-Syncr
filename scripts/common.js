@@ -40,7 +40,7 @@ export class LiveTimeDisplay {
     
     handler() {
         let newDate = Date.now()
-        let currentTime = this.locale.format(Date.now())
+        let currentTime = this.locale.format(newDate)
 
         this.lastTimeRecorded = newDate
         this.displayables.forEach((displayable) => {
