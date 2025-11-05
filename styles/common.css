@@ -662,9 +662,13 @@ headers and footers */
     
     box-shadow: inset 9px 0px 3px -6px #7a74693d;
     background-color: var(--palette-primary-color);
+}
 
+
+
+#mv\.action {
     .c_button > i.bi {
-        font-size: 130%;
+        font-size: 100%;
     }
 }
 
