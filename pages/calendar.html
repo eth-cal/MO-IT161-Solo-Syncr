@@ -67,7 +67,58 @@
             </button>
         </div>
 
-        <!-- TODO: Remove this code. For static presentation only. -->
+        <dialog id="dialog-taskman" class="popup cent">
+            <i id="dialog_close" class="close bi bi-x-lg"></i>
+            <div id="dialog_contents" class="window c_flex_lay c_flex_v gapped c lift curvy">
+                <span id="dialog_title" class="title">Options for "Task Title"</span>
+                <div class="dialog-list c_flex_list c_flex_v compact">
+                    <div id="dialog-task_title" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Name</span>
+                        <input type="textbox"/>
+                    </div>
+                    <div id="dialog-task_desc" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Description</span>
+                        <textarea></textarea>
+                    </div>
+                    <div id="dialog-task_date" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Date</span>
+                        <input type="textbox"/>
+                    </div>
+                    <div id="dialog-reminder" class="list-item c_flex_lay gapped c_flex_v">
+                        <span>Reminder</span>
+                        <select id="selection">
+                            <option value="on-time">On Time</option>
+                            <option value="1-day">Before 1 day</option>
+                            <option value="3-days">Before 3 days</option>
+                            <option value="1-week">Before 1 week</option>
+                            <option value="everyday">Everyday until this day</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="dialog-actions c_flex_lay gapped">
+                    <button class="c_button c flex-end">
+                        Save
+                    </button>
+                    <button class="c_button">
+                        Cancel
+                    </button>
+                </div>
+            </div>
+        </dialog>
+
+        <dialog id="dialog-messenger" class="popup cent">
+            <i id="dialog_close" class="close bi bi-x-lg"></i>
+            <div id="dialog_contents" class="window c_flex_lay c_flex_v gapped c lift curvy">
+                <span id="dialog_title" class="title">Title</span>
+                <span id="dialog_text">Message</span>
+                <div class="dialog-actions c_flex_lay gapped">
+                    <button class="c_button c flex-end">
+                        Okay
+                    </button>
+                </div>
+            </div>
+        </dialog>
+
         <script type="module" src="/scripts/cl-interact.js"></script>
     </body>
 </html>
