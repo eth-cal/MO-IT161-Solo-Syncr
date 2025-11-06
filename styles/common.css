@@ -431,6 +431,10 @@ select {
     &.padded {
         padding: 8px;
     }
+
+    &.indent {
+        padding-left: 16px;
+    }
 }
 
 
