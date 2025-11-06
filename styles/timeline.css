@@ -55,12 +55,56 @@
 }
 
 #tl-mode\.timescr\.sliding-pane {
+    height: 100%;
     background-color: var(--palette-accent-color-darker);
     flex: 1 0;
 
     text-align: center;
     color: #FFFFFF; 
+    overflow: auto;
 }
+
+
+
+#timeline-run {
+    width: 64800px;
+    gap: 20px;
+}
+
+
+
+#timeline-run > div {
+    background-color: aqua;
+    height: 120px;
+
+    position: relative;
+
+    & > .calendar-type,
+    & > .alarm-type,
+    & > .kanban-type {
+        position: absolute;
+        width: 0px;
+        height: 100%;
+        min-width: 15px;
+    }
+
+
+    /* TODO: fill with type-specific attributes*/
+    & > .calendar-type {
+        background-color: red;
+    }
+    
+    & > .alarm-type {
+        background-color: green;
+    }
+    
+    & > .kanban-type {
+        background-color: blue;
+    }
+    
+}
+
+
 
 .tl_footer {
     flex: 0 0;
