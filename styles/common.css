@@ -95,6 +95,24 @@ input[type="textbox"], textarea {
     width: auto;
     min-width: 20px;
 
+    &[data-len="s"] {
+        width: 50px;
+    }
+
+    &[data-len="m"] {
+        width: 90px;
+    }
+
+    &[data-len="l"] {
+        width: 150px;
+    }
+
+    &[data-len="hs"] {
+        flex: 1 0;
+        size: 0;
+        width: 0;
+    }
+
     &.cent {
         text-align: center;
     }
