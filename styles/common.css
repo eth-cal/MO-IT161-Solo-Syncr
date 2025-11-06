@@ -277,6 +277,17 @@ select {
     &.lift/*,&.button*/ {
         box-shadow: 0px 3px 3px var(--shadows-buttons-idle-color);
     }
+
+
+
+    &.size {
+        &.fw {
+            width: 100%;
+        }
+        &.fh {
+            height: 100%;
+        }
+    }
 }
 
 
