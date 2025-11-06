@@ -11,12 +11,35 @@
                     Calendar
                 </div>
                 <div id="mv.edit.topbar" class="opts c_flex_list c_flex_h c_b-rack_pr-light">
-                    <button class="c_button entry">
-                        <i class="bi bi-funnel"></i>Filters
-                    </button>
-                    <button class="c_button entry">
-                        <i class="bi bi-eye"></i>Visibility
-                    </button>
+                    <div id="mv.action" data-act="filter">
+                        <button id="toggler" class="c_button entry">
+                            <i class="bi bi-funnel"></i>Filters
+                        </button>
+                        <div id="submenu" class="popover c_flex_list c_flex_v c_pr-light" data-vis="false">
+                            <span><b>Month and Year</b></span>
+                            <div id="submenu.month-select" class="c_flex_lay gapped c size fw">
+                                <input id="month" type="textbox" value="Jan" data-len="hs"/>
+                                <input id="year" type="textbox" value="2025" data-len="s"/>
+                                <button id="go" class="c_button with-icon"><i class="bi bi-check-lg"></i></button>
+                            </div>
+                            <hr class="common"/>
+                            <span><b></b>Task types</b></span>
+                            <div id="submenu.task-types" class="c_flex_lay indent c_flex_v c size fw">
+                                <div data-act="calendar" class="c_flex_lay c_cent_v c size fw">
+                                    <span>Calendar</span>
+                                    <input class="c flex-end" type="checkbox" checked/>
+                                </div>
+                                <div data-act="alarm" class="c_flex_lay c_cent_v c size fw">
+                                    <span>Alarms</span>
+                                    <input class="c flex-end" type="checkbox" checked/>
+                                </div>
+                                <div data-act="kanban-dated" class="c_flex_lay c_cent_v c size fw">
+                                    <span>Kanban w/ Dates</span>
+                                    <input class="c flex-end" type="checkbox" checked/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="main-view-content" class="c_flex_main">
