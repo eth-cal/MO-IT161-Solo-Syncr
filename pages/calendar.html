@@ -23,30 +23,39 @@
                 <div id="cl.date">
                     &lt;DD&gt; &lt;month&gt;, &lt;YYYY&gt;
                 </div>
-                <div id="cl.grid-view">
-                    <div id="cl.grid-view.row">
-                        <div id="cl.task-entry-box" class="cal_box">
-                            <span class="day_number">&lt;day num&gt;</span>
-                            <span></span> <!-- Force the task_list to be at the bottom by taking the remaining space. -->
-                            <div class="c_flex_lay gapped c_flex_v task_list">
-                                <button class="c_button entry">Calendar</button>
-                                <button class="c_button entry"><i class="bi bi-clock"></i>Alarm</button>
-                                <button class="c_button entry"><i class="bi bi-kanban"></i>Kanban</button>
-                                <button class="c_button entry cent"><i class="bi bi-chevron-down"></i><span>&lt;n&gt; more</span></button>
+                <div id="cl.viewer">
+                    <div id="cl.grid-view">
+                        <div id="cl.week-days">
+                            <div class="container">
+                                <span>S</span>
+                                <span>M</span>
+                                <span>T</span>
+                                <span>W</span>
+                                <span>TH</span>
+                                <span>F</span>
+                                <span>SA</span>
+                            </div>
+                        </div>
+                        <div id="cl.grid-view.tasks">
+                            <div id="cl.grid-view.row">
+                                <div id="cl.task-entry-box" class="cal_box">
+                                    <span class="day_number">&lt;day num&gt;</span>
+                                    <span></span> <!-- Force the task_list to be at the bottom by taking the remaining space. -->
+                                    <div id="task-list" class="c_flex_lay gapped c_flex_v task_list">
+                                        <button data-entry-type="task" class="c_button entry">Calendar</button>
+                                        <button data-entry-type="task-ref" data-task-type="alarm" class="c_button entry"><i class="bi bi-clock"></i>Alarm</button>
+                                        <button data-entry-type="task-ref" data-task-type="kanban-dated" class="c_button entry"><i class="bi bi-kanban"></i>Kanban</button>
+                                        <button data-entry-type="expander" class="c_button entry cent"><i class="bi bi-chevron-down"></i><span>1 more</span></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="cl.grid-view.ctrl" class="c_flex_list c_flex_h" style="
-            position: fixed;
 
-            height: 50px;
-
-            bottom: 0;
-            right: 0;
-        ">
+        <div id="cl.grid-view.ctrl" class="c_flex_list c_flex_h">
             <div id="cl.grid-view.ctrl.opts" class="c_flex_list compact c_flex_h">
                 <button class="c_button square with-icon">
                     <i class="bi bi-eye"></i>
