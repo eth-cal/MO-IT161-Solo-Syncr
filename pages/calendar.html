@@ -68,47 +68,6 @@
         </div>
 
         <!-- TODO: Remove this code. For static presentation only. -->
-        <script type="text/javascript">
-            /** @type {HTMLElement} */
-            let gridRows = document.getElementById("cl.grid-view");
-            /** @type {HTMLElement} */
-            let calendarBox = document.getElementById("first box for presentation").cloneNode(true);
-            
-
-            calendarBox.removeAttribute("id");
-            /** @type {HTMLElement} */
-            let calendarBoxNumber = calendarBox.cloneNode(true); {
-                for (let idx = calendarBox.children.length; idx > 0; idx--) {
-                    let elem = calendarBox.children.item(idx);
-                    console.log(elem);
-                    if (elem == null || elem.classList.contains("day_number")) {continue;}
-                    elem.remove();
-                }
-            }
-
-            let day = 1;
-
-            for (let row of gridRows.children) {
-                let calendarBoxRow = new Set(); {
-                    for (let id = 1; id <= 7; id++) {
-                        if (day > 31) {
-                            break;
-                        }
-
-                        let placeTasks = Math.random() > 0.5;
-                        let element;
-
-                        if (placeTasks) {element = calendarBox.cloneNode(true);}
-                        else {element = calendarBoxNumber.cloneNode(true);}
-
-                        element.children.item(0).textContent = day;
-                        day++
-                        calendarBoxRow.add(element);
-                    }
-                }
-                
-                row.replaceChildren(...calendarBoxRow);
-            }
-        </script>
+        <script type="module" src="/scripts/cl-interact.js"></script>
     </body>
 </html>
