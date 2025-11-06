@@ -240,6 +240,26 @@ dialog.popup {
 
 
 
+select, ::picker(select) {
+    appearance: base-select;
+    font-family: Archivo;
+    border-radius: 6px; 
+    border: none;
+}
+
+select {
+    box-shadow: inset 0px 2px 4px var(--shadows-primary-color);
+}
+
+::picker(select) {
+    box-shadow:
+        inset 0px -2px 2px var(--palette-accent-color),
+        0px 4px 12px var(--shadows-primary-color);
+    padding: 10px;
+}
+
+
+
 .c {
     &.flex-start {
         margin-right: auto;
