@@ -6,6 +6,24 @@ export const DialogTitleDecor = Object.freeze({
 
 
 
+/**
+ * @param {HTMLElement} element
+ */
+function markWrapped(element) {
+    if (isWrapped(element)) {return}
+    element.setAttribute("data-wrapped", true)
+}
+
+
+
+/**
+ * @param {HTMLElement} element
+ */
+function isWrapped(element) {
+    return element.hasAttribute("data-wrapped")
+}
+
+
 export class LiveTimeDisplay {
     constructor(format) {
         /** @type {Intl.DateTimeFormat} */
@@ -139,7 +157,7 @@ export class BasicDialogWrapper {
      * @param {NodeListOf<HTMLButtonElement>} exitButtons 
      */
     constructor(dialog, exitButtons) {
-        if (dialog.getAttribute("data-wrapped") == "true") {throw "Element already wrapped."}
+        if (isWrapped(dialog)) {throw "Element already wrapped."}
        
         /** @type {HTMLDialogElement} */
         this.dialog = dialog
@@ -154,7 +172,7 @@ export class BasicDialogWrapper {
             this.addManyExitActions(exitButtons)
         }
 
-        dialog.setAttribute("data-wrapped", true)
+        markWrapped(dialog)
     }
 
 
