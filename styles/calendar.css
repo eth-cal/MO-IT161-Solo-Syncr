@@ -112,6 +112,16 @@
 }
 
 
+#cl\.grid-view\.ctrl {
+    position: fixed;
+
+    height: 50px;
+
+    bottom: 0;
+    right: 0;
+}
+
+
 #cl\.grid-view\.ctrl\.opts > .c_button > i.bi {
     font-size: 14px;
 }
