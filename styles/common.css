@@ -43,7 +43,9 @@ hr.common {
     /* Horizontal rules are just thin boxes with borders.
     Since all elements have 0px borders by default, just set
     the top border's thickness*/
+    margin: 0px;
     border-top: 1px solid #00000058;
+    width: 100%;
 }
 
 
