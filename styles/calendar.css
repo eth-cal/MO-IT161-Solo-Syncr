@@ -48,7 +48,11 @@
     padding: 10px;
     gap: 20px;
 
-    background-color: bisque;
+    background-color: var(--palette-primary-color);
+
+    &.disabled {
+        background-color: var(--palette-primary-dark-color);
+    }
 
     border-radius: 8px;
     box-shadow: 0px 4px 6px var(--shadows-primary-color);
