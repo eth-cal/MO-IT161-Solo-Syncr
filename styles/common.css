@@ -730,6 +730,20 @@ headers and footers */
 }
 
 
+.popover {
+    visibility: hidden;
+    position: absolute;
+    margin-top: 20px;
+    min-width: 180px;
+    box-shadow: 0px 6px 60px var(--shadows-primary-color);
+
+    &[data-vis="true"] {
+        visibility: visible;
+    }
+    z-index: 1;
+}
+
+
 
 .mv_topbar > .title {
     padding-left: 20;
