@@ -237,3 +237,11 @@ export let math = {
         return Math.max(Math.min(val, high), low)
     }
 }
+
+
+
+export let milli = {
+    day : 86400000,
+    hour : 3600000,
+    minute : 60000,
+}
