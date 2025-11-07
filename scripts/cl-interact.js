@@ -214,7 +214,7 @@ class CalendarFiltersPopoverWrapper extends cmdl.BasicPopoverWrapper {
             return
         }
 
-        let date = new Date(`${month} ${year}`)
+        let date = new Date(`${resolvedMonth} ${year}`)
         
         this.calendarController?.updateToMonthAndYear(date.getFullYear(), date.getMonth())
     }
