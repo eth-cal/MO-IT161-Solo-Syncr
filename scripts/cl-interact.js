@@ -3,6 +3,68 @@ import * as cmdl from "./common.js"
 
 
 
+class CalendarTaskDialogWrapper extends cmdl.BasicDialogWrapper {
+    /**
+     * @param {string} newDescription 
+     * @returns {CalendarTaskDialogWrapper}
+     */
+    setTaskTitle(newTitle) {
+        /** @type {HTMLInputElement} */
+        let textbox = this.dialog.querySelector("#dialog-task_title > input[type=\"textbox\"]")
+        textbox.value = newTitle
+        return this
+    }
+
+
+
+    /**
+     * @param {string} newDescription 
+     * @returns {CalendarTaskDialogWrapper}
+     */
+    setTaskDescription(newDescription) {
+        /** @type {HTMLTextAreaElement} */
+        let textarea = this.dialog.querySelector("#dialog-task_desc > textarea")
+        textarea.textContent = newDescription
+        return this
+    }
+
+
+
+    /**
+     * @param {Date} date 
+     * @returns {CalendarTaskDialogWrapper}
+     */
+    setTaskDate(date) {
+        let field = this.dialog.querySelector("#dialog-task_date > input[type=\"textbox\"]")
+
+        if (field != null) {
+            field.value = date.toLocaleString()
+        }
+
+        return this
+    }
+
+
+    /**
+     * @param {string} reminder
+     * @returns {CalendarTaskDialogWrapper} 
+     */
+    setTaskReminder(reminder) {
+        switch(reminder) {
+            case "on-time":
+            case "1-day":
+            case "3-days":
+            case "1-week":
+            case "everyday": {
+                /** @type {HTMLSelectElement} */
+                let selection = this.dialog.querySelector("#dialog-reminder > select")
+                selection.value = reminder
+            }
+            default: console.error(`Unknown option: ${reminder}`)
+        }
+
+        return this
+    }
 }
 
 let CalenderView = {
@@ -78,8 +140,30 @@ let calendarGrid = document.getElementById("cl.grid-view.tasks");
 /** @type {HTMLElement} */
 let emptyRow = document.getElementById("cl.grid-view.row").cloneNode(false);
 
-let today = new Date(clock.getNow())
-CalenderView.updateToMonthAndYear(today.getFullYear(), today.getMonth())    let clock = (new cmdl.LiveTimeDisplay(
+let calendarView = new CalendarView()
+
+
+let messageDialog = document.querySelector("#dialog-messenger")
+let messageDialogController = new cmdl.BasicMessageWrapper(
+    messageDialog,
+    messageDialog.querySelectorAll("#dialog_close, .dialog-actions > button")
+)
+
+
+let taskInfoDialog = document.querySelector("#dialog-taskman")
+let taskInfoDialogController = new CalendarTaskDialogWrapper(
+    taskInfoDialog,
+    taskInfoDialog.querySelectorAll("#dialog_close, .dialog-actions > button")
+)
+
+let topbarOptFilters = document.querySelector("#mv\\.edit\\.topbar > #mv\\.action[data-act=\"filter\"]")
+let topbarOptFiltersPopover = new CalendarFiltersPopoverWrapper(
+    topbarOptFilters.querySelector("#submenu"),
+    topbarOptFilters.querySelector("#toggler")
+)
+
+{
+    let clock = (new cmdl.LiveTimeDisplay(
         new Intl.DateTimeFormat(
             undefined,
             {
