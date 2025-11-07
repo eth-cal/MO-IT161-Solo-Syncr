@@ -349,12 +349,10 @@ export let date = {
      * @returns {string | null}
      */
     resolveMonth : function(unresolvedString) {
-        let firstLetter = unresolvedString.charAt(0)
         unresolvedString = unresolvedString.toLowerCase()
 
         let selectedMonths = [...this.months].filter((value) => {
-            let lowercased = value.toLowerCase()
-            return lowercased.startsWith(unresolvedString)
+            return value.toLowerCase().startsWith(unresolvedString)
         })
 
         if (selectedMonths.length != 1) {
