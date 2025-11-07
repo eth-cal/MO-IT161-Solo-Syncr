@@ -276,13 +276,13 @@ class CalendarView {
         )
     }
 
-    updateExpanderVis() {
+    updateExpanderVis(forced) {
         let newVisibility =
             this.calendarTaskVisibility
             && this.alarmVisibility
             && this.kanbanTaskVisibility
         
-        if (this.#expanderVisibility == newVisibility) {return}
+        if (!forced && this.#expanderVisibility == newVisibility) {return}
 
         this.#expanderVisibility = newVisibility
         this.updateVisibilityOf(
