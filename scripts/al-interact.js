@@ -47,6 +47,7 @@ function ClampedTextFieldWrapper(
 ) {
     if (field.hasAttribute("data-lastValue")) {
         console.log(`Text field ${field.name}[${field.id}] is possibly controlled by a wrapper already.`)
+        return
     }
 
     field.setAttribute("data-lastValue", cmdl.math.clamp(defval, rMin, rMax))

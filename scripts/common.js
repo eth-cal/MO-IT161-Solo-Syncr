@@ -263,3 +263,35 @@ export let milli = {
     hour : 3600000,
     minute : 60000,
 }
+
+
+
+export let date = {
+    months : [
+        "January", "February", "March",
+        "April", "May", "June", "July",
+        "August", "September", "October",
+        "November", "December"
+    ],
+
+
+
+    /**
+     * @param {string} unresolvedString 
+     */
+    resolveMonth : function(unresolvedString) {
+        let firstLetter = unresolvedString.charAt(0)
+        unresolvedString = unresolvedString.toLowerCase()
+
+        let selectedMonths = [...this.months].filter((value) => {
+            let lowercased = value.toLowerCase()
+            return lowercased.startsWith(unresolvedString)
+        })
+
+        if (selectedMonths.length != 1) {
+            return ""
+        } else {
+            return selectedMonths[0]
+        }
+    }
+}
