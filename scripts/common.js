@@ -151,6 +151,49 @@ export class LiveTimeDisplay {
 
 
 
+export class BasicPopoverWrapper {
+    /**
+     * @param {HTMLElement} element
+     * @param {HTMLElement | HTMLButtonElement} trigger 
+     */
+    constructor(element, trigger) {
+        if (isWrapped(element)) {throw "Element already wrapped."}
+
+        this.popover = element
+        this.trigger = trigger
+
+        if (!element.classList.contains(".popover")) {
+            element.classList.add(".popover")
+        }
+
+        trigger.addEventListener("click", () => {this.toggle()})
+    }
+
+
+
+    /**
+     * @param {boolean?} state 
+     * @returns 
+     */
+    toggle(state) {
+        let currentState = (this.popover.getAttribute("data-vis") == "true")
+        state = (state != null? state: !currentState)
+
+        if (currentState == state) {return this}
+        else {
+            if (state == true) {
+                this.popover.setAttribute("data-vis", true)
+            } else {
+                this.popover.setAttribute("data-vis", false)
+            }
+        }
+
+        return this
+    }
+}
+
+
+
 export class BasicDialogWrapper {
     /**
      * @param {HTMLDialogElement} dialog 
