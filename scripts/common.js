@@ -345,7 +345,8 @@ export let date = {
 
 
     /**
-     * @param {string} unresolvedString 
+     * @param {string} unresolvedString
+     * @returns {string | null}
      */
     resolveMonth : function(unresolvedString) {
         let firstLetter = unresolvedString.charAt(0)
@@ -357,7 +358,7 @@ export let date = {
         })
 
         if (selectedMonths.length != 1) {
-            return ""
+            return null
         } else {
             return selectedMonths[0]
         }
