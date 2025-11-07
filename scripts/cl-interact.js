@@ -209,8 +209,8 @@ class CalendarFiltersPopoverWrapper extends cmdl.BasicPopoverWrapper {
 
         let resolvedMonth = cmdl.date.resolveMonth(month)
 
-            this.onMonthChangeFailure?.(`What is a \"${month}\"?`, `\"${month}\" is not a valid month.`)
         if (resolvedMonth == null) {
+            this.onMonthChangeFailure?.(`What is a \"${month}\"?`, `\"${month}\" is not a valid month or is ambiguous to resolve to a month.`)
             return
         }
 
