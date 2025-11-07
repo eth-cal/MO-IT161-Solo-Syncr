@@ -1,21 +1,8 @@
 
 import * as cmdl from "./common.js"
 
-/** @type {HTMLElement} */
-let calendarBox = document.getElementById("cl.task-entry-box").cloneNode(true);
-/** @type {HTMLElement} */
-let calendarGrid = document.getElementById("cl.grid-view");
-/** @type {HTMLElement} */
-let emptyRow = document.getElementById("cl.grid-view.row").cloneNode(false);
 
 
-calendarBox.removeAttribute("id");
-/** @type {HTMLElement} */
-let emptyCalendarBox = calendarBox.cloneNode(true); {
-    let dayNumberText = emptyCalendarBox.querySelector(".day_number")
-    emptyCalendarBox.removeChild(dayNumberText)
-    emptyCalendarBox.innerHTML = ""
-    emptyCalendarBox.appendChild(dayNumberText)
 }
 
 let CalenderView = {
@@ -95,6 +82,12 @@ let clock = (new cmdl.LiveTimeDisplay(
     .start()
 
 clock.handler()
+/** @type {HTMLElement} */
+let calendarBox = document.getElementById("cl.task-entry-box").cloneNode(true);
+/** @type {HTMLElement} */
+let calendarGrid = document.getElementById("cl.grid-view.tasks");
+/** @type {HTMLElement} */
+let emptyRow = document.getElementById("cl.grid-view.row").cloneNode(false);
 
 let today = new Date(clock.getNow())
 CalenderView.updateToMonthAndYear(today.getFullYear(), today.getMonth())
