@@ -67,11 +67,86 @@ class CalendarTaskDialogWrapper extends cmdl.BasicDialogWrapper {
     }
 }
 
-let CalenderView = {
-    updateToMonthAndYear : function(year, month) {
-        calendarGrid.innerHTML = ""
-        let day = 1;
 
+class CalendarView {
+    calendarTaskVisibility = true
+    alarmVisibility = true
+    kanbanTaskVisibility = true
+    #expanderVisibility = true
+    #currentDate = new Date()
+
+    toggleCalendarTasks(state) {
+        if (this.calendarTaskVisibility != state) {
+            this.calendarTaskVisibility = state
+            this.updateCalendarTaskVis()
+            this.updateExpanderVis()
+        }
+    }
+
+    toggleAlarms(state) {
+        if (this.alarmVisibility != state) {
+            this.alarmVisibility = state
+            this.updateAlarmsVis()
+            this.updateExpanderVis()
+        }
+    }
+
+    toggleKanbanTasks(state) {
+        if (this.kanbanTaskVisibility != state) {
+            this.kanbanTaskVisibility = state
+            this.updateKanbanTaskVis()
+            this.updateExpanderVis()
+        }
+    }
+
+    updateCalendarTaskVis() {
+        this.updateVisibilityOf(
+            calendarGrid.querySelectorAll("#cl\\.task-entry-box button[data-entry-type=\"task\"]"),
+            this.calendarTaskVisibility? "inherit": "hidden"
+        )
+    }
+
+    updateAlarmsVis() {
+        this.updateVisibilityOf(
+            calendarGrid.querySelectorAll("#cl\\.task-entry-box button[data-entry-type=\"task-ref\"][data-task-type=\"alarm\"]"),
+            this.alarmVisibility? "inherit": "hidden"
+        )
+    }
+
+    updateKanbanTaskVis() {
+        this.updateVisibilityOf(
+            calendarGrid.querySelectorAll("#cl\\.task-entry-box button[data-entry-type=\"task-ref\"][data-task-type=\"kanban-dated\"]"),
+            this.kanbanTaskVisibility? "inherit": "hidden"
+        )
+    }
+
+    updateExpanderVis() {
+        let newVisibility =
+            this.calendarTaskVisibility
+            && this.alarmVisibility
+            && this.kanbanTaskVisibility
+        
+        if (this.#expanderVisibility == newVisibility) {return}
+
+        this.#expanderVisibility = newVisibility
+        this.updateVisibilityOf(
+            calendarGrid.querySelectorAll("#cl\\.task-entry-box button[data-entry-type=\"expander\"]"),
+            newVisibility? "inherit": "hidden"
+        )
+    }
+
+    updateVisibilityOf(listOfElements, visibilityParam) {
+        listOfElements.forEach(
+            /**
+             * @param {HTMLElement} button 
+             */
+            (button) => {
+                button.style.visibility = visibilityParam}
+        )
+    }
+
+    updateToMonthAndYear(year, month) {
+        calendarGrid.innerHTML = ""
         let firstDayOfMonth = new Date(year, month)
         let lastDayOfMonth = (new Date(firstDayOfMonth)); {
             lastDayOfMonth.setMonth(lastDayOfMonth.getMonth() + 1)
@@ -98,38 +173,52 @@ let CalenderView = {
         for (let currentWeek = 0; currentWeek < totalWeeksInScope; currentWeek++) {
             /** @type {HTMLElement} */
             let currentRow = emptyRow.cloneNode(false)
+            /** @type {HTMLElement} */
 
             for (let currentDay = 0; currentDay < 7; currentDay++) {
+                let element = calendarBox.cloneNode(true);
+                let elementTaskList = element.querySelector("#task-list")
+                element.setAttribute("data-date", currentInstant.getTime())
+                element.querySelector(".day_number").textContent = currentInstant.getDate();
+
                 switch(true) {
                     case (firstDaysBeforeScope <= 0 && totalDaysInMonth > 0): {
                         let placeTasks = Math.random() > 0.5;
-                        let element;
-
-                        if (placeTasks) {element = calendarBox.cloneNode(true);}
-                        else {element = emptyCalendarBox.cloneNode(true);}
-
-                        element.querySelector(".day_number").textContent = currentInstant.getDate();
-                        currentRow.appendChild(element)
+                        if (!placeTasks) {elementTaskList.style.visibility = "hidden"}
                         totalDaysInMonth--
                         break
                     }
                     case (firstDaysBeforeScope > 0): firstDaysBeforeScope--
                     case (totalDaysInMonth <= 0): {
-                        /** @type {HTMLElement} */
-                        let element = emptyCalendarBox.cloneNode(true)
-                        element.querySelector(".day_number").textContent = currentInstant.getDate();
+                        elementTaskList.style.visibility = "hidden"
                         element.classList.add(["disabled"])
-                        currentRow.appendChild(element)
                         break
                     }
                 }
-
+                currentRow.appendChild(element)
                 currentInstant.setTime(currentInstant.getTime() + cmdl.milli.day)
             }
 
             calendarGrid.appendChild(currentRow)
         }
+
+        this.#currentDate = firstDayOfMonth
+        this.onCalendarUpdate?.()
     }
+
+
+    updateToNow() {
+        let timeNow = new Date()
+        this.updateToMonthAndYear(timeNow.getFullYear(), timeNow.getMonth())
+    }
+
+
+    getActiveViewingDate() {
+        return this.#currentDate
+    }
+
+
+    onCalendarUpdate = function() {}
 }
 
 
