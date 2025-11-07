@@ -253,6 +253,20 @@ export let math = {
      */
     clamp : function (val, low, high) {
         return Math.max(Math.min(val, high), low)
+    },
+
+    /**
+     * @param {number} start 
+     * @param {number} end 
+     * @param {number} phase 
+     * @returns 
+     */
+    lerp : function(
+        start,
+        end,
+        phase
+    ) {
+        return (1 - phase) * start + phase * end
     }
 }
 
