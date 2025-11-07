@@ -287,6 +287,17 @@ export class BasicDialogWrapper {
 
 
 export class BasicMessageWrapper extends BasicDialogWrapper {
+    setMessage(newMessage) {
+        let message = this.dialog.querySelector("#dialog_text")
+        if (message) {
+            message.textContent = newMessage
+        }
+        return this
+    }
+}
+
+
+
 export let math = {
     /**
      * @param {number} val 
