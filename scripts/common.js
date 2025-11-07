@@ -229,7 +229,6 @@ export class BasicDialogWrapper {
 
         clickable.addEventListener("click", () => {this.hide()})
         this.exitActions.push(clickable)
-        console.log(clickable)
         return this
     }
 
