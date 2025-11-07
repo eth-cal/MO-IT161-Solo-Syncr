@@ -420,3 +420,54 @@ let topbarOptFiltersPopover = new CalendarFiltersPopoverWrapper(
         .start()
 
     clock.handler()
+
+
+
+    topbarOptFiltersPopover.setCalendarController(calendarView)
+    
+    topbarOptFiltersPopover.onMonthChangeFailure = (title, message) => {
+        messageDialogController.setTitle(title).setMessage(message).show()
+    }
+
+
+
+    document.querySelectorAll("#cl\\.grid-view\\.ctrl\\.add-task").forEach((openButton) => {
+        openButton.addEventListener("click", () => {
+            taskInfoDialogController
+                .setTitleDecor(cmdl.DialogTitleDecor.NEW, `task`)
+                .setTaskTitle("Calendar")
+                .setTaskDescription("")
+                .setTaskDate(new Date())
+                .setTaskReminder("1-day")
+            
+            taskInfoDialogController.show()
+        });
+    })
+
+    document.querySelector("#cl\\.grid-view\\.ctrl\\.opts > #now")?.addEventListener("click", () => {
+        calendarView.updateToNow()
+    })
+
+    calendarView.onCalendarUpdate = () => {
+        let currentViewingDate = calendarView.getActiveViewingDate()
+        topbarOptFiltersPopover.setMonth(
+            currentViewingDate.getMonth(),
+            currentViewingDate.getFullYear()
+        )
+        document.querySelectorAll("#cl\\.task-entry-box").forEach((taskBox) => {
+            taskBox.querySelector("button[data-entry-type=\"task\"]")?.addEventListener("click", () => {
+                taskInfoDialogController
+                    .setTitleDecor(cmdl.DialogTitleDecor.EDIT, `task "Calendar"`)
+                    .setTaskTitle("Calendar")
+                    .setTaskDescription("")
+                    .setTaskDate(new Date(Number.parseInt(taskBox.getAttribute("data-date"))))
+                    .setTaskReminder("1-week") 
+                
+                taskInfoDialogController.show()
+            });
+        })
+    }
+
+    calendarView.updateToNow()
+    
+}
