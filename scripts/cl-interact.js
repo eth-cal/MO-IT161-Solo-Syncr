@@ -70,18 +70,7 @@ let CalenderView = {
     }
 }
 
-let clock = (new cmdl.LiveTimeDisplay(
-    new Intl.DateTimeFormat(
-        undefined,
-        {
-            "dateStyle": "medium"
-        }
-    )
-)).addElement(document.getElementById("cl.date"))
-    .setIntervalLength(60000)
-    .start()
 
-clock.handler()
 /** @type {HTMLElement} */
 let calendarBox = document.getElementById("cl.task-entry-box").cloneNode(true);
 /** @type {HTMLElement} */
@@ -90,4 +79,15 @@ let calendarGrid = document.getElementById("cl.grid-view.tasks");
 let emptyRow = document.getElementById("cl.grid-view.row").cloneNode(false);
 
 let today = new Date(clock.getNow())
-CalenderView.updateToMonthAndYear(today.getFullYear(), today.getMonth())
+CalenderView.updateToMonthAndYear(today.getFullYear(), today.getMonth())    let clock = (new cmdl.LiveTimeDisplay(
+        new Intl.DateTimeFormat(
+            undefined,
+            {
+                "dateStyle": "full",
+            }
+        )
+    )).addElement(document.getElementById("cl.date"))
+        .setIntervalLength(60000)
+        .start()
+
+    clock.handler()
