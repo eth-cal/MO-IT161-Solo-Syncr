@@ -68,6 +68,162 @@ class CalendarTaskDialogWrapper extends cmdl.BasicDialogWrapper {
 }
 
 
+
+class CalendarFiltersPopoverWrapper extends cmdl.BasicPopoverWrapper {
+    /**
+     * @param {HTMLElement} element 
+     * @param {HTMLElement | HTMLButtonElement} trigger 
+     */
+    constructor(element, trigger) {
+        super(element, trigger)
+
+        this.element = element
+        
+        this.monthSelector = element.querySelector("#submenu\\.month-select")
+        this.taskTypeVisibility = element.querySelector("#submenu\\.task-types")
+
+        this.format = new Intl.DateTimeFormat(undefined, {month: "long"})
+        this.calendarController
+
+        this.calendarTasksActive = true
+        this.alarmsActive = true
+        this.kanbanTasksActive = true
+
+        /** @type {HTMLInputElement} */
+        this.calendarTaskCheckbox = element.querySelector(`#submenu\\.task-types *[data-act="calendar"] > input[type="checkbox"]`) 
+        /** @type {HTMLInputElement} */
+        this.alarmCheckbox = element.querySelector(`#submenu\\.task-types *[data-act="alarm"] > input[type="checkbox"]`) 
+        /** @type {HTMLInputElement} */
+        this.kanbanTaskCheckbox = element.querySelector(`#submenu\\.task-types *[data-act="kanban-dated"] > input[type="checkbox"]`) 
+
+        element.querySelector("#go").addEventListener("click", () => {this.onUserInitiatedMonthChange()})
+        this.calendarTaskCheckbox.addEventListener("click", () => {
+            this.toggleCalendarTasks(this.calendarTaskCheckbox.checked)
+        })
+
+        this.alarmCheckbox.addEventListener("click", () => {
+            this.toggleAlarms(this.alarmCheckbox.checked)
+        })
+
+        this.kanbanTaskCheckbox.addEventListener("click", () => {
+            this.toggleKanbanTasks(this.kanbanTaskCheckbox.checked)
+        })
+    }
+
+
+    /**
+     * @param {CalendarView} controller
+     * @returns
+     */
+    setCalendarController(controller) {
+        this.calendarController = controller
+        return this
+    }
+
+
+
+    /**
+     * @param {boolean?} state 
+     */
+    toggleCalendarTasks(state) {
+        /** @type {HTMLInputElement} */
+        if (this.calendarTasksActive != state) {
+            this.calendarTasksActive = state
+            this.calendarTaskCheckbox.checked = state
+            this.calendarController?.toggleCalendarTasks(state)
+        }
+    }
+
+
+
+    /**
+     * @param {boolean?} state 
+     */
+    toggleAlarms(state) {
+        /** @type {HTMLInputElement} */
+        if (this.alarmsActive != state) {
+            this.alarmsActive = state
+            this.alarmCheckbox.checked = state
+            this.calendarController?.toggleAlarms(state)
+        }
+    }
+
+
+
+    /**
+     * @param {boolean?} state 
+     */
+    toggleKanbanTasks(state) {
+        /** @type {HTMLInputElement} */
+        if (this.kanbanTasksActive != state) {
+            this.kanbanTasksActive = state
+            this.kanbanTaskCheckbox.checked = state
+            this.calendarController?.toggleKanbanTasks(state)
+        }
+    }
+
+
+
+    /**
+     * @param {number} month 
+     * @param {number} year 
+     * @returns {CalendarFiltersPopoverWrapper}
+     */
+    setMonth(month, year) {
+        month = Math.max(month, 1)
+        if (year < 1970) {
+            console.error(`Given year is either too old or negative (must be 1970 or later, got ${year})`)
+            return this
+        }
+        this.monthSelector.querySelectorAll("input[type=\"textbox\"]").forEach((textbox) => {
+            switch (textbox.id) {
+                case "month": {
+                    textbox.value = this.format.format(new Date(year, month))
+                    break
+                }
+                case "year": {textbox.value = year}
+            }
+        })
+        return this
+    }
+
+
+
+    onUserInitiatedMonthChange() {
+        let month = "", year = "1970"
+        
+        this.monthSelector.querySelectorAll("input[type=\"textbox\"]").forEach((textbox) => {
+            switch (textbox.id) {
+                case "month": {month = textbox.value}
+                case "year": {year = textbox.value}
+            }
+        })
+
+        if (year.match("^-?\\d+$") == null) {
+            this.onMonthChangeFailure?.("That's not a year", `Input for year (\"${year}\") does not represent a whole number.`)
+            return
+        } else if (Number.parseInt(year) < 1970) {
+            this.onMonthChangeFailure?.("Feels like yesterday, I think", `Given year ${year} can not be before 1970.`)
+            return
+        }
+
+        let resolvedMonth = cmdl.date.resolveMonth(month)
+
+        if (resolvedMonth == "") {
+            this.onMonthChangeFailure?.(`What is a \"${month}\"?`, `\"${month}\" is not a valid month.`)
+            return
+        }
+
+        let date = new Date(`${month} ${year}`)
+        
+        this.calendarController?.updateToMonthAndYear(date.getFullYear(), date.getMonth())
+    }
+
+    onMonthChangeFailure = function(title, message) {}
+}
+
+
+
 class CalendarView {
     calendarTaskVisibility = true
     alarmVisibility = true
