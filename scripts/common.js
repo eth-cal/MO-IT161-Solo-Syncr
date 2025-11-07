@@ -179,7 +179,7 @@ export class BasicDialogWrapper {
 
     /**
      * @param {HTMLButtonElement} clickable
-     * @returns {KanbanTaskDialogWrapper}
+     * @returns
      */
     addExitAction(clickable) {
         if (this.exitActions.includes(clickable)) {return}
@@ -194,7 +194,7 @@ export class BasicDialogWrapper {
 
     /**
      * @param {NodeListOf<HTMLButtonElement>} clickable 
-     * @returns {KanbanTaskDialogWrapper}
+     * @returns
      */
     addManyExitActions(clickables) {
         clickables.forEach((clickable) => {this.addExitAction(clickable)})
@@ -205,7 +205,7 @@ export class BasicDialogWrapper {
     
     /**
      * @param {String} newTitle 
-     * @returns {KanbanTaskDialogWrapper}
+     * @returns
      */
     setTitle(newTitle) {
         let title = this.dialog.querySelector("#dialog_title")
@@ -219,7 +219,7 @@ export class BasicDialogWrapper {
 
     /**
      * @param {String} newTitle 
-     * @returns {KanbanTaskDialogWrapper}
+     * @returns
      */
     setTitleDecor(decor, extraText) {
         let decorText = extraText;
