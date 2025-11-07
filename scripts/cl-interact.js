@@ -358,6 +358,11 @@ class CalendarView {
             calendarGrid.appendChild(currentRow)
         }
 
+        this.updateCalendarTaskVis()
+        this.updateAlarmsVis()
+        this.updateKanbanTaskVis()
+        this.updateExpanderVis(true)
+
         this.#currentDate = firstDayOfMonth
         this.onCalendarUpdate?.()
     }
