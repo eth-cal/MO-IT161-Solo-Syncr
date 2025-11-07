@@ -287,6 +287,7 @@ export class BasicDialogWrapper {
 
 
 
+export class BasicMessageWrapper extends BasicDialogWrapper {
 export let math = {
     /**
      * @param {number} val 
