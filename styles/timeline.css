@@ -95,8 +95,8 @@
 
 
 #timeline-run > div {
-    background-color: aqua;
-    height: 120px;
+    outline: 1px dotted;
+    height: 100px;
 
     position: relative;
 
