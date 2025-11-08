@@ -80,7 +80,7 @@ class TimelineView {
      */
     put(title, type, timespan) {
         if (type != TimelineView.TASK_TYPE.CALENDAR) {
-            timespan.setEnd(timespan.getStart())
+            timespan.setEnd(timespan.getStart() + 1)
         }
         let newElement = this.#generateTitledElement(title, type, timespan.getStart(), timespan.dist())
         this.#tasks.push({
