@@ -52,7 +52,15 @@
         width: 100%;
         height: 20px;
 
-        /* TODO: Button knob def here when a JS-powered knob finally exists. */
+        position: relative;
+
+        > #knob {
+            position: absolute;
+            height: 100%;
+            width: 20px;
+            background-color: red;
+
+        }
     }
 }
 
