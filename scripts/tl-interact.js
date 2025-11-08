@@ -332,20 +332,20 @@ class TimelineView {
     }
 
     timelineStripView.update()
-}
 
 
-let clock = new cmdl.LiveTimeDisplay(
-    new Intl.DateTimeFormat(
-        undefined,
-        {
-            dateStyle: "full",
-            timeStyle: "short"
-        }
+    let clock = new cmdl.LiveTimeDisplay(
+        new Intl.DateTimeFormat(
+            undefined,
+            {
+                dateStyle: "full",
+                timeStyle: "short"
+            }
+        )
     )
-)
-    .setIntervalLength(5000)
-    .addElement(document.getElementById(`tl-mode.timescr.datetime`))
+        .setIntervalLength(5000)
+        .addElement(document.getElementById(`tl-mode.timescr.datetime`))
 
-clock.start()
-    .handler() 
+    clock.start()
+        .handler() 
+}
