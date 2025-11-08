@@ -109,7 +109,6 @@ class TimelineView {
                 /** @type {HTMLDivElement | null} */
 
                 let startOfTask = task.span.getStart()
-                let lengthOfTask = task.span.dist()
                 let endOfTask = task.span.getEnd()
 
                 let nextAvailableRow = null
@@ -139,7 +138,6 @@ class TimelineView {
             }
         )
 
-        console.log(maxContentWidth * 15)
 
         this.#timelineStrip.innerHTML = ""
         this.#timelineStrip.style.width = `${maxContentWidth * 15}px`
