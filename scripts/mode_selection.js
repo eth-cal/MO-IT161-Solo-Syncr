@@ -16,8 +16,7 @@ let fallbackPage = "/pages/fallback.html";
 // commits here for each page (maybe not for dashboard, still needs a
 // design).
 let idToLinkTargets = {}; {
-    idToLinkTargets[".fallback"] = "/pages/fallback.html";
-    idToLinkTargets["lsb.button-rack.dashboard"] = "/experiment.html";
+    //idToLinkTargets[".fallback"] = "/pages/fallback.html";
     idToLinkTargets["lsb.button-rack.timeline"] = "/pages/timeline.html";
     idToLinkTargets["lsb.button-rack.calendar"] = "/pages/calendar.html";
     idToLinkTargets["lsb.button-rack.alarms"] = "/pages/alarms.html";
