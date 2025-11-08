@@ -1,5 +1,40 @@
 import * as cmdl from "./common.js"
 
+
+
+class TaskTitlePopover {
+    #titlePopover
+
+    constructor() {
+        let popoverTitle = document.createElement("div")
+        popoverTitle.className = "c curvy lift c_pr-light"
+        popoverTitle.style.position = "absolute"
+        popoverTitle.style.padding = "8px"
+        document.body.appendChild(popoverTitle)
+
+        this.#titlePopover = popoverTitle
+    }
+
+    
+    /**
+     * @param {HTMLElement} element 
+     */
+    addAdornee(element) {
+        element.addEventListener("pointerover", (event) => {
+            let bounds = element.getBoundingClientRect()
+            this.#titlePopover.innerHTML = `${element.getAttribute("data-task-title")}`
+            this.#titlePopover.style.left = bounds.left + bounds.width / 2 - (this.#titlePopover.getBoundingClientRect().width / 2)
+            this.#titlePopover.style.top = `${bounds.top - 40}px`
+            this.#titlePopover.style.visibility = "visible"
+        })
+        element.addEventListener("pointerout", (event) => {
+            this.#titlePopover.style.visibility = "hidden"
+        })
+    }
+}
+
+
+
 // Since this is just a simulation of the timeline view,
 // I'm not even going to use Dates.
 class NumberRange {
@@ -241,6 +276,8 @@ class TimelineView {
         "Do Y", "Do Z", "Remove X", "Remove Y", "Remove Z",
         "Typos in warning dialogs", "Add delete button for W"
     ]
+
+    let popover = new TaskTitlePopover()
 
     let timelineStripView = new TimelineView(
         document.getElementById("tl-mode.timescr.sliding-pane")
