@@ -80,7 +80,7 @@
 
 
 #timeline-run {
-    width: 64800px;
+    min-width: 100%;
     gap: 20px;
 }
 
