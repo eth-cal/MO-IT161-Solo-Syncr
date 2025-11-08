@@ -103,23 +103,48 @@
     & > .calendar-type,
     & > .alarm-type,
     & > .kanban-type {
+        padding: 5px;
         position: absolute;
+
         width: 0px;
-        height: 100%;
         min-width: 15px;
+
+        border-radius: 5px;
+
+        text-overflow: clip;
+        overflow: hidden;
+        white-space: nowrap;
+
+        text-align: left;
+        outline: solid 1px #00000090;
+    }
+
+    & > .kanban-type,
+    & > .alarm-type {
+        bottom: 5%;
+        height: 70%;
+        max-width: 15px;
+
+        color: #FFF
+    }
+
+    & > .calendar-type {
+        height: 100%;
+
+        color: #000
     }
 
 
     /* TODO: fill with type-specific attributes*/
     & > .calendar-type {
-        background-color: red;
+        background-color: #ffffff;
     }
     
     & > .alarm-type {
-        background-color: green;
+        background-color: #ff8762;
     }
     
     & > .kanban-type {
-        background-color: blue;
+        background-color: #cae3ff;
     }
 }
