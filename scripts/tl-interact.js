@@ -261,7 +261,7 @@ class TimelineView {
             case 0 : {
                 title = randomElement(sampleCalTaskTitles)
                 taskType = TimelineView.TASK_TYPE.CALENDAR
-                length = Math.round(Math.random() * 25 + 3)
+                length = Math.round(Math.random() * 5 + 3)
 
                 break
             }
@@ -281,7 +281,7 @@ class TimelineView {
             title, taskType, new NumberRange(offset, offset + length)
         )
 
-        offset += Math.round(Math.pow(Math.random(), 5) * 70)
+        offset += Math.round(Math.pow(Math.random(), 2) * 12)
     }
 
     timelineStripView.update()
