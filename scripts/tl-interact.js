@@ -141,6 +141,41 @@ class TimelineView {
 
         this.#timelineStrip.innerHTML = ""
         this.#timelineStrip.style.width = `${maxContentWidth * 15}px`
+
+        let firstDate = Date.now() - Math.round(  
+            maxContentWidth / 24 / 2
+        ) * cmdl.milli.day
+
+        let shortenedDate = new Intl.DateTimeFormat(
+            undefined,
+            {dateStyle: "short"}
+        )
+
+        let dayDividerRule = document.createElement("div")
+
+        dayDividerRule.style.position = "relative"
+        dayDividerRule.style.width = "100%"
+        dayDividerRule.style.height = "16px"
+        dayDividerRule.style.zIndex = "1"
+        dayDividerRule.style.overflow = "clip"
+
+        
+
+        for (let step = 0; step < Math.ceil(maxContentWidth / 24); step++) {
+            let dayDivider = document.createElement("span") 
+            dayDivider.style.position = "absolute"
+            dayDivider.style.width = "0px"
+            dayDivider.style.color = "#FFF"
+            dayDivider.style.top = `2px`
+            dayDivider.style.left = `${step * 15 * 24}px`
+            dayDivider.style.fontSize = "12px"
+            dayDivider.textContent = `${shortenedDate.format(firstDate + cmdl.milli.day * step)}`
+
+            dayDividerRule.appendChild(dayDivider)
+        }
+
+        this.#timelineStrip.appendChild(dayDividerRule)
+
         rows.forEach((row) => {
             this.#timelineStrip.appendChild(row.element)
         })
