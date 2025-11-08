@@ -13,6 +13,7 @@ class TaskTitlePopover {
         document.body.appendChild(popoverTitle)
 
         this.#titlePopover = popoverTitle
+        this.#titlePopover.style.visibility = "hidden"
     }
 
     
