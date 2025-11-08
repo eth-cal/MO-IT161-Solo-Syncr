@@ -48,7 +48,7 @@ export class LiveTimeDisplay {
 
         function closeHandler() {
             ltd.stop()
-            window.removeEventListener(closeHandler)
+            window.removeEventListener("close", closeHandler)
         }
 
         window.addEventListener("close", closeHandler)
