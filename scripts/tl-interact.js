@@ -209,23 +209,11 @@ class TimelineView {
         )
 
         let dayDividerRule = document.createElement("div")
-
-        dayDividerRule.style.position = "relative"
-        dayDividerRule.style.width = "100%"
-        dayDividerRule.style.height = "16px"
-        dayDividerRule.style.zIndex = "1"
-        dayDividerRule.style.overflow = "clip"
-
-        
+        dayDividerRule.id = "day-div-ruler"
 
         for (let step = 0; step < Math.ceil(maxContentWidth / 24); step++) {
-            let dayDivider = document.createElement("span") 
-            dayDivider.style.position = "absolute"
-            dayDivider.style.width = "0px"
-            dayDivider.style.color = "#FFF"
-            dayDivider.style.top = `2px`
+            let dayDivider = document.createElement("span")
             dayDivider.style.left = `${step * 15 * 24}px`
-            dayDivider.style.fontSize = "12px"
             dayDivider.textContent = `${shortenedDate.format(firstDate + cmdl.milli.day * step)}`
 
             dayDividerRule.appendChild(dayDivider)
