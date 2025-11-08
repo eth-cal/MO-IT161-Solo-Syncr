@@ -185,9 +185,12 @@ class TimelineView {
 
     #generateTitledElement(title, type, xoffset, width) {
         let newDiv = document.createElement("div")
-        newDiv.textContent = title
+        if (type == TimelineView.TASK_TYPE.CALENDAR) {
+            newDiv.textContent = title
+        }
         newDiv.style.left = `${(xoffset | 0) * 15}px`
         newDiv.style.width = `${(width | 0) * 15}px`
+        newDiv.setAttribute("data-task-title", title)
         this.#decorateElementByTaskType(newDiv, type)
         return newDiv
     }
