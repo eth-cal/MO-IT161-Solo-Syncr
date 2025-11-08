@@ -91,16 +91,37 @@ class TimelineView {
     /**
      * @param {HTMLElement} timelineElement 
      */
-    constructor(timelineElement) {
-        this.#timelineElement = timelineElement
-        this.#timelineStrip = timelineElement.querySelector("#timeline-run")
+    constructor(mainView, popoverController) {
+        this.#timelineElement = mainView.querySelector("#tl-mode\\.timescr\\.sliding-pane")
+        this.#timelineStrip = this.#timelineElement.querySelector("#timeline-run")
+        this.#timelineBar = mainView.querySelector("#tl\\.footer\\.timebar")
+        this.#popoverController = popoverController
+
+        let knob = this.#timelineBar.querySelector("#knob")
+        this.#timelineElement.addEventListener("scroll", () => {
+            let parentSize = this.#timelineStrip.parentElement.getBoundingClientRect().width
+            let thisSize = this.#timelineStrip.getBoundingClientRect().width
+            let scrollExtent = thisSize - parentSize
+
+            let scrollPhase = (this.#timelineElement.scrollLeft) / scrollExtent
+            let knobCorrect = scrollPhase * knob.getBoundingClientRect().width / this.#timelineBar.getBoundingClientRect().width 
+
+            knob.style.left = `${cmdl.math.lerp(0, 100, scrollPhase - knobCorrect)}%`
+        })
     }
 
 
     /** @private @type {HTMLElement} */
+    #timelineStrip
+
+    /** @private @type {HTMLElement} */
     #timelineElement
 
-    #timelineStrip
+    /** @private @type {HTMLElement} */
+    #timelineBar
+
+    /** @private @type {TaskTitlePopover} */
+    #popoverController
 
     /** @private @type {[HTMLDivElement]} */
     #tasks = []
