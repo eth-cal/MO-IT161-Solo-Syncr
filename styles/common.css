@@ -300,7 +300,7 @@ select {
 /* #region Common styling */
 
 
-.c_button {
+button {
     border-radius: 4px;
 
     outline-color: #00000020;
@@ -364,13 +364,13 @@ select {
 }
 
 
-.c_button.with-icon {
+button.with-icon {
     aspect-ratio: 1/1;
 }
 
 
 
-.c_button.entry {
+button.entry {
     display: flex;
     flex-direction: row;
 
@@ -460,25 +460,25 @@ Pair with .c_flex_h or .c_flex_v to change their direction*/
         padding: 4px;
         gap: 4px;
 
-        > .c_button {
+        > button {
             border-radius: 6px;
         }
     }
 
     &.square {
-        > .c_button {
+        > button {
             aspect-ratio: 1/1;
         }
     }
 
-    > .c_button {
+    > button {
         font-size: 10px;
     }
     
-    &.bt_m > .c_button {
+    &.bt_m > button {
         font-size: 16px;
     }
-    &.bt_l > .c_button {
+    &.bt_l > button {
         font-size: 24px;
     }
 
@@ -639,7 +639,7 @@ headers and footers */
             flex-direction: row-reverse;
             align-self: flex-end;
 
-            > .c_button {
+            > button {
                 flex-shrink: 1;
 
                 > i {font-size: 15;}
@@ -729,7 +729,7 @@ headers and footers */
 
 
 #mv\.action {
-    .c_button > i.bi {
+    button > i.bi {
         font-size: 100%;
     }
 }
