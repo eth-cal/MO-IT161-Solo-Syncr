@@ -139,6 +139,7 @@ class TimelineView {
             timespan.setEnd(timespan.getStart() + 1)
         }
         let newElement = this.#generateTitledElement(title, type, timespan.getStart(), timespan.dist())
+        this.#popoverController.addAdornee(newElement)
         this.#tasks.push({
             element : newElement,
             span : timespan
