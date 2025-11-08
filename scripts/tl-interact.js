@@ -290,7 +290,7 @@ class TimelineView {
     let popover = new TaskTitlePopover()
 
     let timelineStripView = new TimelineView(
-        document.getElementById("tl-mode.timescr.sliding-pane")
+        document.getElementById("main-view-content"), popover
     )
 
     let offset = 0
