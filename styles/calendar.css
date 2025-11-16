@@ -27,6 +27,8 @@
     width: fit-content;
     padding: 10px;
 
+    z-index: 1;
+
     & .container {
         display: flex; 
         width: fit-content;
