@@ -138,7 +138,9 @@ function kanban_extractFromElement(element) {
     return new KanbanTaskInfo(
         element.querySelector(".kb-task-name")?.textContent,
         element.querySelector(".kb-task-desc")?.textContent,
-        element.querySelector(".kb-task-deadline")?.textContent
+        // I didn't even bothered to add a separate data-* attribute due to time constraints.
+        // This is a quick fix just for this prototype. Firefox has a dumber Date parser.
+        element.querySelector(".kb-task-deadline")?.textContent?.match("Done by (.+)")?.[0]
     )
 }
 
