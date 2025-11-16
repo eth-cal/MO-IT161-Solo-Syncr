@@ -1,4 +1,10 @@
 :root {
+    --txt_tiny : 10px;
+    --txt_def : 14px;
+    --txt_tag : 20px;
+    --txt_title : 24px;
+
+    --palette-primary-light-color : #FFFFFF;
     --palette-primary-color: #eee2c9;
     --palette-primary-dark-color: #686360;
     
