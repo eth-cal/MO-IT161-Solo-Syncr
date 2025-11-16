@@ -59,6 +59,7 @@ class CalendarTaskDialogWrapper extends cmdl.BasicDialogWrapper {
                 /** @type {HTMLSelectElement} */
                 let selection = this.dialog.querySelector("#dialog-reminder > select")
                 selection.value = reminder
+                break
             }
             default: console.error(`Unknown option: ${reminder}`)
         }
