@@ -215,7 +215,12 @@ class CalendarFiltersPopoverWrapper extends cmdl.BasicPopoverWrapper {
             return
         }
 
-        let date = new Date(`${resolvedMonth} ${year}`)
+        // So, Firefox is apparently more strict with date formatting on instantiation.
+        // This should work better now, no longer relying on string matching. The code
+        // is guaranteed to work after checking inputs. The resolved month is null-checked,
+        // and the returned value always exists in common.date.months. The year is also
+        // guaranteed to be an Integer.
+        let date = new Date(Number.parseInt(year), cmdl.date.months.indexOf(resolvedMonth))
         
         this.calendarController?.updateToMonthAndYear(date.getFullYear(), date.getMonth())
     }
