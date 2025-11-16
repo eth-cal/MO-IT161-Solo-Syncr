@@ -171,7 +171,7 @@ class CalendarFiltersPopoverWrapper extends cmdl.BasicPopoverWrapper {
      * @returns {CalendarFiltersPopoverWrapper}
      */
     setMonth(month, year) {
-        month = Math.max(month, 1)
+        month = cmdl.math.clamp(month, 0, 11)
         if (year < 1970) {
             console.error(`Given year is either too old or negative (must be 1970 or later, got ${year})`)
             return this
