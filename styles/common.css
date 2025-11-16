@@ -33,7 +33,7 @@
 
 html, body {
     font-family: Archivo;
-    font-size: 14;
+    font-size: 14px;
 }
 
 body {
@@ -121,7 +121,7 @@ input[type="textbox"], textarea {
     &[data-len="hs"] {
         flex: 1 0;
         size: 0;
-        width: 0;
+        width: 0px;
     }
 
     &.cent {
@@ -211,10 +211,10 @@ dialog.popup {
     }
 
     & > .close {
-        top: 1;
-        right: 1;
+        top: 0px;
+        right: 0px;
 
-        margin: 16 16 0 0;
+        margin: 16px 16px 0 0;
         color: white;
 
         position: absolute;
@@ -382,7 +382,7 @@ button.entry {
 
     text-align: left;
     align-items: center;
-    font-size: 12;
+    font-size: 12px;
 
     &.cent {
         > span {
@@ -648,7 +648,7 @@ headers and footers */
             > button {
                 flex-shrink: 1;
 
-                > i {font-size: 15;}
+                > i {font-size: 15px;}
             }
         }
     }
@@ -757,10 +757,10 @@ headers and footers */
 
 
 .mv_topbar > .title {
-    padding-left: 20;
-    padding-right: 20;
+    padding-left: 20px;
+    padding-right: 20px;
     font-weight: lighter;
-    font-size: 20;
+    font-size: 20px;
     text-shadow: 0px 3px 4px #eee2c9;
 }
 
