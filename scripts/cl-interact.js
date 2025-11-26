@@ -203,8 +203,15 @@ class CalendarFiltersPopoverWrapper extends cmdl.BasicPopoverWrapper {
         if (year.match("^-?\\d+$") == null) {
             this.onMonthChangeFailure?.("That's not a year", `Input for year (\"${year}\") does not represent a whole number.`)
             return
-        } else if (Number.parseInt(year) < 1970) {
-            this.onMonthChangeFailure?.("Feels like yesterday, I think", `Given year ${year} can not be before 1970.`)
+        }
+        
+        let parsedYear = Number.parseInt(year)
+        
+        if (parsedYear < 1970) {
+            this.onMonthChangeFailure?.("Oldest task of the century", `Given year (got ${year}) can not be before 1970.`)
+            return
+        } else if (parsedYear >= 200000) {
+            this.onMonthChangeFailure?.(`"And on the 32nd of February..."`, `Given year can not be later than year 200000.`)
             return
         }
 
