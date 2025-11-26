@@ -41,7 +41,7 @@ body {
     margin: 0% 0% 0% 0%;
 }
 
-button {
+button, .popover {
     font-family: Archivo;
 }
 
