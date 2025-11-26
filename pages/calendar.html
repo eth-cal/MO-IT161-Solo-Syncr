@@ -15,7 +15,7 @@
                 </div>
                 <div id="mv.edit.topbar" class="opts c_flex_list c_flex_h c_b-rack_pr-light">
                     <div id="mv.action" data-act="filter">
-                        <button id="toggler" class="c_button entry">
+                        <button id="toggler" class="entry">
                             <i class="bi bi-funnel"></i>Filters
                         </button>
                         <div id="submenu" class="popover c_flex_list c_flex_v c_pr-light" data-vis="false">
@@ -23,7 +23,7 @@
                             <div id="submenu.month-select" class="c_flex_lay gapped c size fw">
                                 <input id="month" type="textbox" value="Jan" data-len="hs"/>
                                 <input id="year" type="textbox" value="2025" data-len="s"/>
-                                <button id="go" class="c_button with-icon"><i class="bi bi-check-lg"></i></button>
+                                <button id="go" class="with-icon"><i class="bi bi-check-lg"></i></button>
                             </div>
                             <hr/>
                             <span><b></b>Task types</b></span>
@@ -68,10 +68,9 @@
                                     <span class="day_number">&lt;day num&gt;</span>
                                     <span></span> <!-- Force the task_list to be at the bottom by taking the remaining space. -->
                                     <div id="task-list" class="c_flex_lay gapped c_flex_v task_list">
-                                        <button data-entry-type="task" class="c_button entry">Calendar</button>
-                                        <button data-entry-type="task-ref" data-task-type="alarm" class="c_button entry"><i class="bi bi-clock"></i>Alarm</button>
-                                        <button data-entry-type="task-ref" data-task-type="kanban-dated" class="c_button entry"><i class="bi bi-kanban"></i>Kanban</button>
-                                        <button data-entry-type="expander" class="c_button entry cent"><i class="bi bi-chevron-down"></i><span>1 more</span></button>
+                                        <button data-entry-type="task" class="entry">Calendar</button>
+                                        <button data-entry-type="task-ref" data-task-type="alarm" class="entry"><i class="bi bi-clock"></i>Alarm</button>
+                                        <button data-entry-type="task-ref" data-task-type="kanban-dated" class="entry"><i class="bi bi-kanban"></i>Kanban</button>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +82,7 @@
 
         <div id="cl.grid-view.ctrl" class="c_flex_list c_flex_h">
             <div id="cl.grid-view.ctrl.opts" class="c_flex_list compact c_flex_h">
-                <button id="now" class="c_button square with-icon">
+                <button id="now" class="square with-icon">
                     <i class="bi bi-clock"></i>
                 </button>
                 <button class=" square with-icon">
@@ -91,7 +90,7 @@
                 </button>
             </div>
             
-            <button id="cl.grid-view.ctrl.add-task" class="c_button square with-icon">
+            <button id="cl.grid-view.ctrl.add-task" class="square with-icon">
                 <i class="bi bi-plus-lg"></i>
             </button>
         </div>
