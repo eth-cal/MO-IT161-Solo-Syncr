@@ -742,9 +742,11 @@ headers and footers */
 
 
 #mv\.action {
-    button > i.bi {
-        font-size: 100%;
+    button {
+        font-size: 10px;
     }
+
+    display: flex;
 }
 
 
