@@ -24,7 +24,7 @@ class TaskTitlePopover {
         element.addEventListener("pointerover", (event) => {
             let bounds = element.getBoundingClientRect()
             this.#titlePopover.innerHTML = `${element.getAttribute("data-task-title")}`
-            this.#titlePopover.style.left = bounds.left + bounds.width / 2 - (this.#titlePopover.getBoundingClientRect().width / 2)
+            this.#titlePopover.style.left = `${bounds.left + bounds.width / 2 - (this.#titlePopover.getBoundingClientRect().width / 2)}px`
             this.#titlePopover.style.top = `${bounds.top - 40}px`
             this.#titlePopover.style.visibility = "visible"
         })
