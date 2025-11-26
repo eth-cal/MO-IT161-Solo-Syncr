@@ -532,7 +532,7 @@ headers and footers */
     height: auto;
     overflow-y: auto;
 
-    &.col {
+    &.column {
         flex-direction: row;
     }
 }
