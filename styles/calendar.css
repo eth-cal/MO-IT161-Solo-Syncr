@@ -108,7 +108,7 @@
 
     gap: 2px;
 
-    > .c_button > i {
+    > button > i {
         font-size: 12px;
     }
 }
@@ -124,7 +124,7 @@
 }
 
 
-#cl\.grid-view\.ctrl\.opts > .c_button > i.bi {
+#cl\.grid-view\.ctrl\.opts > button > i.bi {
     font-size: 14px;
 }
 
