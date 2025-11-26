@@ -649,9 +649,8 @@ headers and footers */
 
 
         #lsb\.plan-sel\.active\.opts {
-            width: min-content;
-            flex-direction: row-reverse;
             align-self: flex-end;
+            width: 120px;
 
             > button {
                 flex-shrink: 1;
