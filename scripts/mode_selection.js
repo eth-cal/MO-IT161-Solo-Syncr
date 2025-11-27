@@ -60,15 +60,18 @@ async function trySwitchViewTo(id) {
             visitedPages[link] = false;
         }
 
-        await fetch(idToLinkTargets[id])
+        // await fetch(idToLinkTargets[id])
 
-        .then( (result) => {
-            if (result.ok) {
-                visitedPages[link] = true;
-                _switchViewTo(id);
-                activeId = id;
-            }
-        } );
+        // .then( (result) => {
+        //     if (result.ok) {
+        //         visitedPages[link] = true;
+        //         _switchViewTo(id);
+        //         activeId = id;
+        //     }
+        // } );
+
+        _switchViewTo(id);
+        activeId = id;
     }
 }
 
