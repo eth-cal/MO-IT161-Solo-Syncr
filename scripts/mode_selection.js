@@ -67,7 +67,7 @@ async function trySwitchViewTo(id) {
         //         activeId = id;
         //     }
         // } );
-
+        visitedPages[link] = true;
         _switchViewTo(id);
         activeId = id;
     }
