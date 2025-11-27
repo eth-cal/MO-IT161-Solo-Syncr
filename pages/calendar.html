@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/styles/common.css"/>
     <link rel="stylesheet" href="/styles/calendar.css"/>
@@ -14,30 +15,34 @@
                 </div>
                 <div id="mv.edit.topbar" class="opts c_flex_list c_flex_h c_b-rack_pr-light">
                     <div id="mv.action" data-act="filter">
-                        <button id="toggler" class="c_button entry">
+                        <button id="toggler" class="entry">
                             <i class="bi bi-funnel"></i>Filters
                         </button>
                         <div id="submenu" class="popover c_flex_list c_flex_v c_pr-light" data-vis="false">
                             <span><b>Month and Year</b></span>
-                            <div id="submenu.month-select" class="c_flex_lay gapped c size fw">
-                                <input id="month" type="textbox" value="Jan" data-len="hs"/>
-                                <input id="year" type="textbox" value="2025" data-len="s"/>
-                                <button id="go" class="c_button with-icon"><i class="bi bi-check-lg"></i></button>
+                            <div id="submenu.month-select" class="container">
+                                <div class="row gap-1">
+                                    <input class="col" id="month" type="textbox" value="Jan" data-len="hs"/>
+                                    <input class="col-2" id="year" type="textbox" value="2025" data-len="s"/>
+                                    <button class="col-2" id="go" class="btn btn-success"><i class="bi bi-check-lg"></i></button>
+                                </div>
                             </div>
                             <hr/>
-                            <span><b></b>Task types</b></span>
-                            <div id="submenu.task-types" class="c_flex_lay indent c_flex_v c size fw">
-                                <div data-act="calendar" class="c_flex_lay c_cent_v c size fw">
-                                    <span>Calendar</span>
-                                    <input class="c flex-end" type="checkbox" checked/>
-                                </div>
-                                <div data-act="alarm" class="c_flex_lay c_cent_v c size fw">
-                                    <span>Alarms</span>
-                                    <input class="c flex-end" type="checkbox" checked/>
-                                </div>
-                                <div data-act="kanban-dated" class="c_flex_lay c_cent_v c size fw">
-                                    <span>Kanban w/ Dates</span>
-                                    <input class="c flex-end" type="checkbox" checked/>
+                            <span><b>Task types</b></span>
+                            <div id="submenu.task-types" class="container p-0 pb-2">
+                                <div class="col px-2">
+                                    <div data-act="calendar" class="row gx-0">
+                                        <span class="col">Calendar</span>
+                                        <input class="" type="checkbox" checked/>
+                                    </div>
+                                    <div data-act="alarm" class="row gx-0 pt-2">
+                                        <span class="col">Alarms</span>
+                                        <input class="" type="checkbox" checked/>
+                                    </div>
+                                    <div data-act="kanban-dated" class="row gx-0 pt-2">
+                                        <span class="col">Kanban w/ Dates</span>
+                                        <input class="" type="checkbox" checked/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +56,7 @@
                 <div id="cl.viewer">
                     <div id="cl.grid-view">
                         <div id="cl.week-days">
-                            <div class="container">
+                            <div class="ruler">
                                 <span>S</span>
                                 <span>M</span>
                                 <span>T</span>
@@ -65,12 +70,11 @@
                             <div id="cl.grid-view.row">
                                 <div id="cl.task-entry-box" class="cal_box">
                                     <span class="day_number">&lt;day num&gt;</span>
-                                    <span></span> <!-- Force the task_list to be at the bottom by taking the remaining space. -->
                                     <div id="task-list" class="c_flex_lay gapped c_flex_v task_list">
-                                        <button data-entry-type="task" class="c_button entry">Calendar</button>
-                                        <button data-entry-type="task-ref" data-task-type="alarm" class="c_button entry"><i class="bi bi-clock"></i>Alarm</button>
-                                        <button data-entry-type="task-ref" data-task-type="kanban-dated" class="c_button entry"><i class="bi bi-kanban"></i>Kanban</button>
-                                        <button data-entry-type="expander" class="c_button entry cent"><i class="bi bi-chevron-down"></i><span>1 more</span></button>
+                                        <button data-entry-type="task" class="entry">Calendar</button>
+                                        <button data-entry-type="task-ref" data-task-type="alarm" class="entry"><i class="bi bi-clock"></i>Alarm</button>
+                                        <button data-entry-type="task-ref" data-task-type="kanban-dated" class="entry"><i class="bi bi-kanban"></i>Kanban</button>
+                                        <button data-entry-type="expander" class="entry cent"><i class="bi bi-chevron-down"></i><span>1 more</span></button>
                                     </div>
                                 </div>
                             </div>
@@ -80,19 +84,21 @@
             </div>
         </div>
 
-        <div id="cl.grid-view.ctrl" class="c_flex_list c_flex_h">
-            <div id="cl.grid-view.ctrl.opts" class="c_flex_list compact c_flex_h">
-                <button id="now" class="c_button square with-icon">
-                    <i class="bi bi-clock"></i>
-                </button>
-                <button class=" square with-icon">
-                    <i class="bi bi-trash"></i>
+        <div id="cl.grid-view.ctrl" class="w-100">
+            <div class="row py-0 me-1 h-100 mw-25">
+                <div id="cl.grid-view.ctrl.opts" class="col d-flex flex-row-reverse align-items-center gap-2">
+                    <button id="now" class="btn btn-info col-1 p-0 px-2">
+                    <i class="bi bi-clock fs-6"></i>
+                    </button>
+                    <button class="btn btn-danger col-1 p-0 px-2">
+                        <i class="bi bi-trash fs-6"></i>
+                    </button>
+                </div>
+                
+                <button id="cl.grid-view.ctrl.add-task" class="col-1 p-0 btn btn-success">
+                    <i class="bi bi-plus-lg fs-3"></i>
                 </button>
             </div>
-            
-            <button id="cl.grid-view.ctrl.add-task" class="c_button square with-icon">
-                <i class="bi bi-plus-lg"></i>
-            </button>
         </div>
 
         <dialog id="dialog-taskman" class="popup cent">
@@ -123,11 +129,11 @@
                         </select>
                     </div>
                 </div>
-                <div class="dialog-actions c_flex_lay gapped">
-                    <button class=" c flex-end">
+                <div class="dialog-actions text-end container p-0">
+                    <button class="btn btn-success col">
                         Save
                     </button>
-                    <button class="">
+                    <button class="btn btn-danger col">
                         Cancel
                     </button>
                 </div>
@@ -139,8 +145,8 @@
             <div id="dialog_contents" class="window c_flex_lay c_flex_v gapped c lift curvy">
                 <span id="dialog_title" class="title">Title</span>
                 <span id="dialog_text">Message</span>
-                <div class="dialog-actions c_flex_lay gapped">
-                    <button class=" c flex-end">
+                <div class="dialog-actions container p-0 text-end">
+                    <button class="btn btn-info">
                         Okay
                     </button>
                 </div>

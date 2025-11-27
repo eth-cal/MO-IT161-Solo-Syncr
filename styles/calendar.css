@@ -29,7 +29,7 @@
 
     z-index: 1;
 
-    & .container {
+    & .ruler {
         display: flex; 
         width: fit-content;
         gap: 10px;
@@ -108,7 +108,7 @@
 
     gap: 2px;
 
-    > .c_button > i {
+    > button > i {
         font-size: 12px;
     }
 }
@@ -117,17 +117,8 @@
 #cl\.grid-view\.ctrl {
     position: fixed;
 
-    height: 50px;
+    max-width: 500px;
 
     bottom: 0;
     right: 0;
-}
-
-
-#cl\.grid-view\.ctrl\.opts > .c_button > i.bi {
-    font-size: 14px;
-}
-
-#cl\.grid-view\.ctrl\.add-task > i.bi {
-    font-size: 20px;
 }
