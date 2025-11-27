@@ -90,13 +90,15 @@ Entering the planning will now let you manage tasks.
     1. Enter **Calendar**/**Kanban** Mode.
     2. Click "**+**" to add a new task.
     3. Fill the information.
-        3.1. Deadlines in kanban tasks are optional.
+        - Note: Deadlines in kanban tasks are optional.
     4. Click "**Save**".
 - When adding an **alarm**:
     1. Enter Alarm Mode.
     2. Fill the information below without selecting an existing alarm.
-        2.1. ... or you can click the "Time Now" button to instantly add an alarm based on the current time*, then adjust settings there.
+        - ... or you can click the "Time Now" button to instantly add an alarm based on the current time*, then adjust settings there.
     3. Click "Add".
+
+\*\* The planner is never hidden in the prototype.
 
 ## Who Can Use?
 The Syncr app can be used by anyone, regardless of their organisational status (i.e. personal or commercial).
