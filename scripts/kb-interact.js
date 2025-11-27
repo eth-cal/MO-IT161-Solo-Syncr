@@ -146,12 +146,6 @@ function kanban_extractFromElement(element) {
 
 
 
-/**
- * 
- */
-
-
-
 {
     clock.addElement(document.getElementById("kb.control-bar.live-time"))
     clock.setIntervalLength(1000)
