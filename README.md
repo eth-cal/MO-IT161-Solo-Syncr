@@ -6,9 +6,14 @@ Syncr is a little web-app that provides 3 modes of time management and "task wor
 >## Note
 >This project demonstrates the features of Syncr. However, this is only a prototype. Expect that some features are incomplete, or actions don't do much. Certain points in this README file will have asterisks **(\*)** to denote features or parts of the prototype that have no substantial functionality.
 >## Also
->Much of the tasks shown in this project are either purely randomised in every refresh or by certain interactions, or simply placed directly into the page. No management functionality is to be expected in this prototype.
+>Much of the tasks shown in this project are either purely randomised in every refresh or by certain interactions, or are simply fixed; not changeable or 100% interactive. No management functionality is to be expected in this prototype.
 
 ## Project Contents
+The following tech is used by Syncr:
+- JavaScript (at least ES24)
+- Bootstrap 5.3.8 (thru jsDelivr, CSS only)
+- Bootstrap Icons 1.13.1 (thru jsDelivr)
+
 The below shows the prototype's file structure:
 ```
 < root >
@@ -16,7 +21,7 @@ The below shows the prototype's file structure:
 :   |   alarms.html
 :   |   calendar.html
 :   |   kanban.html
-:   _   timeline.html
+:   |   timeline.html
 ;
 |-  scripts
 :   |   al-interact.js
