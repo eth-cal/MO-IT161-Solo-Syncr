@@ -84,19 +84,21 @@
             </div>
         </div>
 
-        <div id="cl.grid-view.ctrl" class="c_flex_list c_flex_h">
-            <div id="cl.grid-view.ctrl.opts" class="c_flex_list compact c_flex_h">
-                <button id="now" class="square with-icon">
-                    <i class="bi bi-clock"></i>
-                </button>
-                <button class="square with-icon">
-                    <i class="bi bi-trash"></i>
+        <div id="cl.grid-view.ctrl" class="container-sm">
+            <div class="row py-0 me-1 h-100">
+                <div id="cl.grid-view.ctrl.opts" class="col d-flex flex-row-reverse align-items-center gap-2">
+                    <button id="now" class="btn btn-info col-1 p-0 px-2">
+                    <i class="bi bi-clock fs-6"></i>
+                    </button>
+                    <button class="btn btn-danger col-1 p-0 px-2">
+                        <i class="bi bi-trash fs-6"></i>
+                    </button>
+                </div>
+                
+                <button id="cl.grid-view.ctrl.add-task" class="col-1 p-0 btn btn-success">
+                    <i class="bi bi-plus-lg fs-3"></i>
                 </button>
             </div>
-            
-            <button id="cl.grid-view.ctrl.add-task" class="square with-icon">
-                <i class="bi bi-plus-lg"></i>
-            </button>
         </div>
 
         <dialog id="dialog-taskman" class="popup cent">
