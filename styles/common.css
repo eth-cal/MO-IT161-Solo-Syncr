@@ -754,7 +754,7 @@ headers and footers */
     visibility: hidden;
     position: absolute;
     margin-top: 20px;
-    min-width: 180px;
+    min-width: 220px;
     box-shadow: 0px 6px 60px var(--shadows-primary-color);
 
     &[data-vis="true"] {

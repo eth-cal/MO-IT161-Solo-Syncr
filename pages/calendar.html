@@ -20,25 +20,29 @@
                         </button>
                         <div id="submenu" class="popover c_flex_list c_flex_v c_pr-light" data-vis="false">
                             <span><b>Month and Year</b></span>
-                            <div id="submenu.month-select" class="c_flex_lay gapped c size fw">
-                                <input id="month" type="textbox" value="Jan" data-len="hs"/>
-                                <input id="year" type="textbox" value="2025" data-len="s"/>
-                                <button id="go" class="with-icon"><i class="bi bi-check-lg"></i></button>
+                            <div id="submenu.month-select" class="container">
+                                <div class="row gap-1">
+                                    <input class="col" id="month" type="textbox" value="Jan" data-len="hs"/>
+                                    <input class="col-2" id="year" type="textbox" value="2025" data-len="s"/>
+                                    <button class="col-2" id="go" class="btn btn-success"><i class="bi bi-check-lg"></i></button>
+                                </div>
                             </div>
                             <hr/>
                             <span><b>Task types</b></span>
-                            <div id="submenu.task-types" class="c_flex_lay gapped indent c_flex_v c size fw">
-                                <div data-act="calendar" class="c_flex_lay c_cent_v c size fw">
-                                    <span>Calendar</span>
-                                    <input class="c flex-end" type="checkbox" checked/>
-                                </div>
-                                <div data-act="alarm" class="c_flex_lay c_cent_v c size fw">
-                                    <span>Alarms</span>
-                                    <input class="c flex-end" type="checkbox" checked/>
-                                </div>
-                                <div data-act="kanban-dated" class="c_flex_lay c_cent_v c size fw">
-                                    <span>Kanban w/ Dates</span>
-                                    <input class="c flex-end" type="checkbox" checked/>
+                            <div id="submenu.task-types" class="container p-0 pb-2">
+                                <div class="col px-2">
+                                    <div data-act="calendar" class="row gx-0">
+                                        <span class="col">Calendar</span>
+                                        <input class="" type="checkbox" checked/>
+                                    </div>
+                                    <div data-act="alarm" class="row gx-0 pt-2">
+                                        <span class="col">Alarms</span>
+                                        <input class="" type="checkbox" checked/>
+                                    </div>
+                                    <div data-act="kanban-dated" class="row gx-0 pt-2">
+                                        <span class="col">Kanban w/ Dates</span>
+                                        <input class="" type="checkbox" checked/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
