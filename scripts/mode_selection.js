@@ -10,8 +10,6 @@ var localStorageSupport; {
     }
 }
 
-let fallbackPage = "/pages/fallback.html";
-
 // NOTE: Just put currently non-existent links so you don't have to push
 // commits here for each page (maybe not for dashboard, still needs a
 // design).
