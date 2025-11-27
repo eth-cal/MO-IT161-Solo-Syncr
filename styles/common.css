@@ -333,7 +333,8 @@ button {
         outline-width 700ms,
         outline-color 500ms,
         transform 200ms cubic-bezier(.21,.8,.2,1.15)
-    ;
+    !important;
+
     cursor: pointer;
 
     &:hover {
@@ -342,7 +343,8 @@ button {
         outline-width: 2px;
         outline-color: #FFFFFF96;
         transform: 
-            scale(110%);
+            scale(110%)
+        !important;
     }
 
     &:focus {
@@ -356,23 +358,27 @@ button {
             box-shadow 200ms cubic-bezier(.21,.8,.2,1.15),
             outline-width 20ms,
             transform 200ms cubic-bezier(.11,1.69,.14,.83)
-        ;
+        !important;
+
         background-color: #ffba92;
         box-shadow: 0px 2px 8px var(--shadows-buttons-press-color);
         outline-width: 3px;
         transform: 
-            scale(95%);
+            scale(95%)
+        !important;
     }
 
     &.min-anim {
         &:hover {
             transform: 
-                scale(101.5%);
+                scale(101.5%)
+            !important;
         }
 
         &:active {
             transform: 
-                scale(99.75%);
+                scale(99.75%)
+            !important;
         }
     }
 }
