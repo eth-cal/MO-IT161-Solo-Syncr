@@ -709,6 +709,12 @@ headers and footers */
 
 
 
+#mv\.view {
+    width: 100%;
+}
+
+
+
 .mv_topbar {
     display: flex;
     
