@@ -15,10 +15,10 @@ var localStorageSupport; {
 // design).
 let idToLinkTargets = {}; {
     //idToLinkTargets[".fallback"] = "/pages/fallback.html";
-    idToLinkTargets["lsb.button-rack.timeline"] = "\./pages/timeline.html";
-    idToLinkTargets["lsb.button-rack.calendar"] = "\./pages/calendar.html";
-    idToLinkTargets["lsb.button-rack.alarms"] = "\./pages/alarms.html";
-    idToLinkTargets["lsb.button-rack.kanban"] = "\./pages/kanban.html";
+    idToLinkTargets["lsb.button-rack.timeline"] = "pages/timeline.html";
+    idToLinkTargets["lsb.button-rack.calendar"] = "pages/calendar.html";
+    idToLinkTargets["lsb.button-rack.alarms"] = "pages/alarms.html";
+    idToLinkTargets["lsb.button-rack.kanban"] = "pages/kanban.html";
 }
 
 let visitedPages = {};
