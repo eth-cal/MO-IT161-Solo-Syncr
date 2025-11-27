@@ -6,9 +6,14 @@ Syncr is a little web-app that provides 3 modes of time management and "task wor
 >## Note
 >This project demonstrates the features of Syncr. However, this is only a prototype. Expect that some features are incomplete, or actions don't do much. Certain points in this README file will have asterisks **(\*)** to denote features or parts of the prototype that have no substantial functionality.
 >## Also
->Much of the tasks shown in this project are either purely randomised in every refresh or by certain interactions, or simply placed directly into the page. No management functionality is to be expected in this prototype.
+>Much of the tasks shown in this project are either purely randomised in every refresh or by certain interactions, or are simply fixed; not changeable or 100% interactive. No management functionality is to be expected in this prototype.
 
 ## Project Contents
+The following tech is used by Syncr:
+- JavaScript (at least ES24)
+- Bootstrap 5.3.8 (thru jsDelivr, CSS only)
+- Bootstrap Icons 1.13.1 (thru jsDelivr)
+
 The below shows the prototype's file structure:
 ```
 < root >
@@ -16,7 +21,7 @@ The below shows the prototype's file structure:
 :   |   alarms.html
 :   |   calendar.html
 :   |   kanban.html
-:   _   timeline.html
+:   |   timeline.html
 ;
 |-  scripts
 :   |   al-interact.js
@@ -85,13 +90,15 @@ Entering the planning will now let you manage tasks.
     1. Enter **Calendar**/**Kanban** Mode.
     2. Click "**+**" to add a new task.
     3. Fill the information.
-        3.1. Deadlines in kanban tasks are optional.
+        - Note: Deadlines in kanban tasks are optional.
     4. Click "**Save**".
 - When adding an **alarm**:
     1. Enter Alarm Mode.
     2. Fill the information below without selecting an existing alarm.
-        2.1. ... or you can click the "Time Now" button to instantly add an alarm based on the current time*, then adjust settings there.
+        - ... or you can click the "Time Now" button to instantly add an alarm based on the current time*, then adjust settings there.
     3. Click "Add".
+
+\*\* The planner is never hidden in the prototype.
 
 ## Who Can Use?
 The Syncr app can be used by anyone, regardless of their organisational status (i.e. personal or commercial).

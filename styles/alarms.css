@@ -107,7 +107,7 @@
     flex-direction: row;
     
     padding: 5px;
-    gap: 5px;
+    gap: 10px;
     
     align-items: center;
     justify-content: center;
@@ -118,7 +118,6 @@
 
 
 #al\.opts-pane\.ring-time\.day-setter {
-    height: 50000px;
     > div {
         font-size: 16px;
         justify-content: center;
