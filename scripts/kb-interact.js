@@ -193,7 +193,7 @@ function kanban_extractFromElement(element) {
                     .clearTaskDeadline()
                     .show()
             });
-        column.querySelector("#kb\\.column\\.actions > button[data-act=\"edit\"]")
+        column.querySelector("#kb\\.column\\.actions button[data-act=\"edit\"]")
             ?.addEventListener("click", () => {
                 taskColumnDialogController
                     .setTitleDecor(cmdl.DialogTitleDecor.EDIT, `column "${columnTitle}"`)
