@@ -131,12 +131,13 @@ function _mode_alarms_paddedSet(field, value, leading) {
 
     timeNowBox.addEventListener("click", function(event) {
         let timeNow = new Date()
-        let halfHour = (timeNow.getHours() - 1) % 12
+        let hoursNow = timeNow.getHours()
+        let halfHour = (hoursNow - 1) % 12
 
         hourField.value = halfHour + 1
         _mode_alarms_paddedSet(minuteField, timeNow.getMinutes(), 2)
         _mode_alarms_changeMeridiem(
-            (halfHour >= 12)? "PM": "AM"
+            (hoursNow >= 12)? "PM": "AM"
         )
     })
 
