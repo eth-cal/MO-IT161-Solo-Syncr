@@ -98,6 +98,9 @@ Entering the planning will now let you manage tasks.
         - ... or you can click the "Time Now" button to instantly add an alarm based on the current time*, then adjust settings there.
     3. Click "Add".
 
+See the link to take a glance of its features:
+![preview](https://drive.google.com/file/d/1jqDGF1hUstVXNX82M3pOD0kLeUOO6MhI/view?usp=sharing)
+
 \*\* The planner is never hidden in the prototype.
 
 ## Who Can Use?
